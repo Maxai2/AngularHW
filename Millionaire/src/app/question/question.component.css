@@ -1,0 +1,204 @@
+.divQuestion {
+  display: flex;
+  flex-direction: column;
+}
+.divQuestion .lbQuestion {
+  border: 0.5px solid #a8caf0;
+  background-color: black;
+  padding: 30px;
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+  color: white;
+  box-sizing: border-box;
+}
+.divQuestion .lbPoint {
+  border: 0.5px solid #a8caf0;
+  border-radius: 10px;
+  background-color: black;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  color: #f4d22a;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+.divQuestion .divAnswers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-top: 10px;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+}
+.divQuestion .divAnswers .aVariant {
+  grid-row: 1;
+  grid-column: 1;
+}
+.divQuestion .divAnswers .bVariant {
+  grid-row: 1;
+  grid-column: 2;
+}
+.divQuestion .divAnswers .cVariant {
+  grid-row: 2;
+  grid-column: 1;
+}
+.divQuestion .divAnswers .dVariant {
+  grid-row: 2;
+  grid-column: 2;
+}
+.divQuestion .divAnswers button {
+  border: 0.5px solid #a8caf0;
+  border-radius: 10px;
+  background-color: black;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  text-align: start;
+}
+.divQuestion .divAnswers button span {
+  color: #f4d22a;
+}
+.divQuestion .divAnswers button:hover {
+  background-color: #f4d22a;
+  color: black;
+  transition-duration: 1s;
+}
+.divQuestion .divAnswers button:hover span {
+  color: white;
+}
+.divQuestion .divAnswers button:disabled {
+  color: lightgrey;
+  cursor: default;
+}
+.divQuestion .divHelpers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+}
+.divQuestion .divHelpers button {
+  margin: 0 30px;
+  border: 0.5px solid #a8caf0;
+  border-radius: 5px;
+  background-color: black;
+  padding: 10px;
+  cursor: pointer;
+  color: #f4d22a;
+}
+.divQuestion .divHelpers button:hover {
+  background-color: #f4d22a;
+  color: white;
+  transition-duration: 1s;
+}
+.divQuestion .divHelpers button:disabled {
+  color: lightgrey;
+  cursor: default;
+}
+.divQuestion #FriendHelp {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+#sureDiv {
+  border: 0.5px solid #a8caf0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#sureDiv label {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+#sureDiv div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+}
+#sureDiv div button {
+  margin: 0 30px;
+  border: 0.5px solid #a8caf0;
+  border-radius: 5px;
+  background-color: black;
+  padding: 10px;
+  cursor: pointer;
+  color: #f4d22a;
+}
+#sureDiv div button:hover {
+  background-color: #f4d22a;
+  color: white;
+  transition-duration: 1s;
+}
+#winDiv {
+  border: 0.5px solid #a8caf0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#winDiv h1 {
+  text-align: center;
+  color: green;
+}
+#winDiv button {
+  margin: 10px 30px;
+  border: 0.5px solid #a8caf0;
+  border-radius: 5px;
+  background-color: black;
+  padding: 10px;
+  cursor: pointer;
+  color: #f4d22a;
+}
+#winDiv button:hover {
+  background-color: #f4d22a;
+  color: white;
+  transition-duration: 1s;
+}
+#loseDiv {
+  border: 0.5px solid #a8caf0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#loseDiv h1 {
+  text-align: center;
+  color: red;
+}
+#loseDiv label {
+  color: white;
+  text-align: center;
+}
+#loseDiv button {
+  margin: 10px 30px;
+  border: 0.5px solid #a8caf0;
+  border-radius: 5px;
+  background-color: black;
+  padding: 10px;
+  cursor: pointer;
+  color: #f4d22a;
+}
+#loseDiv button:hover {
+  background-color: #f4d22a;
+  color: white;
+  transition-duration: 1s;
+}
+.btClassRecover button {
+  border: 0.5px solid #a8caf0;
+  border-radius: 10px;
+  background-color: black;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  text-align: start;
+}
+.btClassRecover button span {
+  color: #f4d22a;
+}
+.btClassRecover button:hover {
+  background-color: #f4d22a;
+  color: black;
+  transition-duration: 1s;
+}
+.btClassRecover button:hover span {
+  color: white;
+}

@@ -1,0 +1,25 @@
+<div>
+  <!-- <time>{{timer5sec | date : "HH.mm.ss"}}</time> -->
+  <label>{{timer5sec.toString()}}</label>
+  <button class="bt" id='Start' (click)='StartTimer()'>Start</button>
+  <button class="bt" id='Pause' (click)='PauseTimer()'>Pause</button>
+  <button class="btReset" id="Reset" (click)='ResetTimer()'>Reset</button>
+  <br>
+  <progress value={{progress5Value}} max="5" id="progress"></progress>
+</div>
+<div>
+  <label>{{timer30sec.toString()}}</label>
+  <button class="bt">Start</button>
+  <button class="bt">Pause</button>
+  <button class="btReset">Reset</button>
+  <br>
+  <progress value={{progress30Value}} max="30"></progress>
+</div>
+<div>
+  <label>{{timer1min.toString()}}</label>
+  <button class="bt">Start</button>
+  <button class="bt">Pause</button>
+  <button class="btReset">Reset</button>
+  <br>
+  <progress value={{progress60Value}} max="60"></progress>
+</div>

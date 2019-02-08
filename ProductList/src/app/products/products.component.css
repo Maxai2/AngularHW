@@ -1,0 +1,15 @@
+li {
+  border: 1px solid;
+  margin: 10px 0;
+  text-align: center;
+}
+li a {
+  text-decoration: none;
+}
+li a:visited,
+li a:link {
+  color: black;
+}
+li a:hover {
+  color: blue;
+}

@@ -1,0 +1,27 @@
+.HeaderWithLink h1 {
+  text-align: center;
+}
+.HeaderWithLink div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.HeaderWithLink div a {
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  color: coral;
+}
+.HeaderWithLink div a:visited,
+.HeaderWithLink div a:link {
+  color: black;
+}
+.HeaderWithLink .active {
+  background-color: aliceblue;
+}
+.contentClass {
+  margin: 0 auto;
+  width: 1080px;
+}

@@ -1,0 +1,24 @@
+<h2>Количество продуктов в корзине: {{pBasketCount}}</h2>
+
+<table *ngIf='basketProducts.length !== 0'>
+  <tr>
+    <th>Name</th>
+    <th>Count</th>
+    <th>Price</th>
+    <th>Amount</th>
+  </tr>
+  <tr *ngFor='let pb of basketProducts'>
+    <td>{{pb.Name}}</td>
+    <td>
+      {{pb.Count}}
+      <button (click)='removeProdFromBasket(pb.id)'>Remove</button>
+    </td>
+    <td>{{pb.Price}} $</td>
+    <td>{{pb.Count * pb.Price}} $</td>
+  </tr>
+</table>
+
+<div *ngIf='totalPrice !== 0'>
+  <hr>
+  <label><span>Total price: </span>{{totalPrice}} $</label>
+</div>

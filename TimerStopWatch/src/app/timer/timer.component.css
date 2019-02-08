@@ -1,0 +1,32 @@
+div {
+  padding: 100px 10px 10px;
+}
+div button {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin: 5px 5px;
+  vertical-align: top;
+  border-color: transparent;
+}
+div time {
+  font-size: 50px;
+  vertical-align: top;
+}
+div .btStart {
+  color: white;
+  background-color: #19a69d;
+}
+div .btStart:active {
+  background-color: #0f5752;
+}
+div .btReset {
+  color: #aaaaaa;
+  background-color: white;
+}
+div .btReset:active {
+  background-color: #d8d6d6;
+}
+div progress {
+  width: 100%;
+}

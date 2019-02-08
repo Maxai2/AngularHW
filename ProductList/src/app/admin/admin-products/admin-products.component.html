@@ -1,0 +1,14 @@
+<ol>
+  <li *ngFor='let p of goods'>
+    <a routerLink='edit/{{p.id}}'>{{p.Name}}</a>
+    <button (click)='RemoveAdminProd(p.id)'>Remove</button>
+  </li>
+</ol>
+
+<hr>
+
+<div>
+  <button (click)='NewProd()'>New</button>
+</div>
+
+<router-outlet></router-outlet>

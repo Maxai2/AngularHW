@@ -1,0 +1,70 @@
+<div class='modalDiv' id="modalDivId" (click)='closeMod($event)'>
+  <div class='productDiv'>
+
+    <form [formGroup]='productForm' (ngSubmit)='onSubmit()'>
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" formControlName="name">
+            <span class='error' *ngIf='name.invalid && (name.dirty || name.touched)'>
+              <span *ngIf='name.errors.required'>Name is required</span>
+            </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Price</td>
+          <td>
+            <input type="number" formControlName="price"> $
+            <span class='error' *ngIf='price.invalid && (price.dirty || price.touched)'>
+              <span *ngIf='price.errors.required'>Price is required</span>
+              <span *ngIf='price.errors.min'>Price must be more than 0</span>
+            </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Category</td>
+          <td>
+            <select formControlName="category">
+              <option *ngFor='let c of categoryList' [value]='c'>{{c}}</option>
+            </select>
+            <span class='error' *ngIf='category.invalid && (category.dirty || category.touched)'>
+              <span *ngIf='category.errors.required'>Category is required</span>
+            </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Can buy</td>
+          <td><input type="checkbox" formControlName="canBuy"></td>
+        </tr>
+
+        <tr>
+          <td>Count</td>
+          <td>
+            <input type="number" formControlName="count">
+            <span class='error' *ngIf='count.invalid && (count.dirty || count.touched)'>
+              <span *ngIf='count.errors.required'>Count is required</span>
+              <span *ngIf='count.errors.min'>Count must be more than 0</span>
+            </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Expire date</td>
+          <td>
+            <input type="date" formControlName="expireDate">
+          </td>
+        </tr>
+      </table>
+
+      <div class="buttons">
+        <input type="submit" value='Save' *ngIf='!isNew' [disabled]='name.invalid || price.invalid || category.invalid || count.invalid'>
+        <input type="submit" value='Add' *ngIf='isNew' [disabled]='name.invalid || price.invalid || category.invalid || count.invalid'>
+      </div>
+    </form>
+
+  </div>
+</div>

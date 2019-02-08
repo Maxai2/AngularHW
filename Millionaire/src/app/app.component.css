@@ -1,0 +1,15 @@
+.wrap .iconImg {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.wrap .iconImg img {
+  grid-column: 2;
+  margin: 20px auto;
+}
+.divBody {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+.divBody div {
+  grid-column: 2;
+}

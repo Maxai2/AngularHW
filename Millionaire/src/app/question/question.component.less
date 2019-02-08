@@ -1,0 +1,285 @@
+.divQuestion
+{
+  display: flex;
+  flex-direction: column;
+
+  .lbQuestion
+  {
+    border: 0.5px solid #a8caf0;
+    background-color: black;
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    margin: 10px auto;
+    color: white;
+    box-sizing: border-box;
+  }
+
+  .lbPoint
+  {
+    border: 0.5px solid #a8caf0;
+    border-radius: 10px;
+    background-color: black;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: #f4d22a;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .divAnswers
+  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 10px;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+
+    .aVariant
+    {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    .bVariant
+    {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    .cVariant
+    {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    .dVariant
+    {
+      grid-row: 2;
+      grid-column: 2;
+    }
+
+    button
+    {
+      border: 0.5px solid #a8caf0;
+      border-radius: 10px;
+      background-color: black;
+      padding: 10px;
+      cursor: pointer;
+      color: white;
+      text-align: start;
+
+      span
+      {
+        color: #f4d22a;
+      }
+    }
+
+    button:hover:enabled
+    {
+      background-color: #f4d22a;
+      color: black;
+      transition-duration: 1s;
+
+      span
+      {
+        color: white;
+      }
+    }
+
+    button:disabled
+    {
+      color: lightgrey;
+      cursor: default;
+    }
+
+    button:hover:disabled
+    {
+      color: lightgrey;
+      cursor: default;
+    }
+  }
+
+  .divHelpers
+  {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+
+    button
+    {
+      margin: 0 30px;
+      border: 0.5px solid #a8caf0;
+      border-radius: 5px;
+      background-color: black;
+      padding: 10px;
+      cursor: pointer;
+      color: #f4d22a;
+    }
+
+    button:hover
+    {
+      background-color: #f4d22a;
+      color: white;
+      transition-duration: 1s;
+    }
+
+    button:disabled
+    {
+      color: lightgrey;
+      cursor: default;
+    }
+  }
+
+  #FriendHelp
+  {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+#sureDiv
+{
+  border: 0.5px solid #a8caf0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  label
+  {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  div
+  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+
+    button
+    {
+      margin: 0 30px;
+      border: 0.5px solid #a8caf0;
+      border-radius: 5px;
+      background-color: black;
+      padding: 10px;
+      cursor: pointer;
+      color: #f4d22a;
+    }
+
+    button:hover
+    {
+      background-color: #f4d22a;
+      color: white;
+      transition-duration: 1s;
+    }
+  }
+}
+
+#winDiv
+{
+  border: 0.5px solid #a8caf0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  h1
+  {
+    text-align: center;
+    color: green;
+  }
+
+  button
+  {
+    margin: 10px 30px;
+    border: 0.5px solid #a8caf0;
+    border-radius: 5px;
+    background-color: black;
+    padding: 10px;
+    cursor: pointer;
+    color: #f4d22a;
+  }
+
+  button:hover
+  {
+    background-color: #f4d22a;
+    color: white;
+    transition-duration: 1s;
+  }
+}
+
+#loseDiv
+{
+  border: 0.5px solid #a8caf0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  h1
+  {
+    text-align: center;
+    color: red;
+  }
+
+  label
+  {
+    color: white;
+    text-align: center;
+  }
+
+  button
+  {
+    margin: 10px 30px;
+    border: 0.5px solid #a8caf0;
+    border-radius: 5px;
+    background-color: black;
+    padding: 10px;
+    cursor: pointer;
+    color: #f4d22a;
+  }
+
+  button:hover
+  {
+    background-color: #f4d22a;
+    color: white;
+    transition-duration: 1s;
+  }
+}
+
+.btClassRecover
+{
+  button
+  {
+    border: 0.5px solid #a8caf0;
+    border-radius: 10px;
+    background-color: black;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    text-align: start;
+
+
+    span
+    {
+      color: #f4d22a;
+    }
+  }
+
+  button:hover
+  {
+    background-color: #f4d22a;
+    color: black;
+    transition-duration: 1s;
+
+    span
+    {
+      color: white;
+    }
+  }
+}

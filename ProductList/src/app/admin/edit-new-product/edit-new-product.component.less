@@ -1,0 +1,55 @@
+.modalDiv
+{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .productDiv
+    {
+      margin: 250px auto 0;
+      width: 500px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+
+      table
+      {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+
+        td
+        {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(odd)
+        {
+          background-color: #dddddd;
+        }
+
+        .error
+        {
+          color: red;
+          margin: 5px 0 0 5px;
+          display: block;
+        }
+
+        input
+        {
+          text-align: center;
+        }
+      }
+
+      .buttons
+      {
+        display: grid;
+        margin-top: 20px;
+      }
+    }
+}

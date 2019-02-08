@@ -1,0 +1,84 @@
+<div class='divQuestion' [class.hidden]='!showQuestion' id='questionDiv'>
+  <label class='lbQuestion'>{{question}}</label>
+  <label class='lbPoint'>{{point}}</label>
+
+  <div class='divAnswers'>
+    <button id='0' class='aVariant' (click)='answer(0)'>
+      <span>A:</span> {{aAnswer}}
+    </button>
+    <button id='1' class='bVariant' (click)='answer(1)'>
+      <span>B:</span> {{bAnswer}}
+    </button>
+    <button id=2 class='cVariant' (click)='answer(2)'>
+      <span>C:</span> {{cAnswer}}
+    </button>
+    <button id='3' class='dVariant' (click)='answer(3)'>
+      <span>D:</span> {{dAnswer}}
+    </button>
+  </div>
+
+  <div class='divHelpers'>
+    <button id='fifty' (click)='FiftyFifty()'>50/50</button>
+    <button id='call' (click)='Call()'>Звонок другу</button>
+    <button id='auditory' (click)='Auditory()'>Помощь зала</button>
+  </div>
+
+  <span id='FriendHelp' style='display: none;'>Космос думает что ответ {{CorIncorAns}}.</span>
+  <!-- <ul>
+    <li></li>
+  </ul> -->
+</div>
+
+<div [class.hidden]='showQuestion' id='sureDiv'>
+  <labeL>'{{answerLetter}}' ваш окончательный ответ?</labeL>
+
+  <div>
+    <button (click)='sure(1)'>Да</button>
+    <button (click)='sure(0)'>Нет</button>
+  </div>
+</div>
+
+<div id='winDiv'>
+  <h1>Congratulation {{name}} you Winner!</h1>
+  <button (click)='restartGame()'>Restart</button>
+</div>
+
+<div id='loseDiv'>
+  <h1>Sorry {{name}}, but you Lose...</h1>
+  <label>Win point: {{point}}</label>
+  <button (click)='restartGame()'>Restart</button>
+</div>
+
+
+<!-- <script>
+  Auditory()
+  {
+    // (<HTMLInputElement>document.getElementById('auditory')).disabled = true;
+    const curId = this.questions[this.currentQuestionId].hintId;
+
+    const chart = new CanvasJS.Chart('chartContainer', {
+      theme: 'light1', // "light2", "dark1", "dark2"
+      animationEnabled: true, // change to true
+      title: {
+        text: ''
+      },
+      data: [
+      {
+        // Change type to "bar", "area", "spline", "pie",etc.
+        type: 'column',
+        dataPoints: [
+          { label: 'A',  y: 10  },
+          { label: 'B', y: 15  },
+          { label: 'C', y: 25  },
+          { label: 'D',  y: 30  }
+        ]
+      }
+      ]
+    });
+    chart.render();
+  }
+</script>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script> -->

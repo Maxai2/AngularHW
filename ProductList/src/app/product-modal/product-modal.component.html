@@ -1,0 +1,42 @@
+<div class='modalDiv' id="modalDivId" (click)='closeMod($event)'>
+  <div class='productDiv'>
+
+    <table>
+        <tr>
+          <td>Name</td>
+          <td>{{product.Name}}</td>
+        </tr>
+
+        <tr>
+          <td>Price</td>
+          <td>{{product.Price}} $</td>
+        </tr>
+
+        <tr>
+          <td>Category</td>
+          <td>{{product.Category}}</td>
+        </tr>
+
+        <tr>
+          <td>Can buy</td>
+          <td><input type="checkbox" [(ngModel)]="product.canBuy" disabled></td>
+        </tr>
+
+        <tr>
+          <td>Count</td>
+          <td>{{product.Count}}</td>
+        </tr>
+
+        <tr>
+          <td>Expire date</td>
+          <td>{{ product.expireDate | date: 'dd/MMM/yyyy hh:mm:ss' }}</td>
+        </tr>
+    </table>
+
+    <div class="buttons">
+      <input type="number" max="{{product.Count}}" min="1" [(ngModel)]="prodCount">
+      <button (click)='addProdToBasket()' [disabled]="!product.canBuy">Add to basket</button>
+    </div>
+
+  </div>
+</div>
