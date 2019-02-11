@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,6 +19,8 @@ import { CurrentWeatherBy7DayComponent } from './current-weather-by7-day/current
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

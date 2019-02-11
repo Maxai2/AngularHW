@@ -1,0 +1,46 @@
+.welcomeDiv {
+  display: flex;
+  flex-direction: column;
+}
+.welcomeDiv h1,
+.welcomeDiv h4,
+.welcomeDiv input {
+  text-align: center;
+}
+.welcomeDiv input {
+  margin: 0 auto;
+  width: 500px;
+}
+.welcomeDiv button {
+  width: 100px;
+  margin: 10px auto 0;
+}
+.linkDiv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+}
+.linkDiv a {
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  color: coral;
+}
+.linkDiv a:visited,
+.linkDiv a:link {
+  color: black;
+}
+.linkDiv a:hover {
+  transition-duration: 0.5s;
+  background-color: aliceblue;
+}
+.linkDiv .active {
+  background-color: aliceblue;
+}
+.contentClass {
+  margin: 0 auto;
+  width: 1080px;
+}
