@@ -10,12 +10,12 @@ export class WeatherInterceptor implements HttpInterceptor {
   constructor(private http: HttpClient) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const name = localStorage.getItem('name');
 
-    // if (name) {
-      const p = new HttpParams().set('key', this.apiKey).set('q', 'Baku');
-      req = req.clone({ params: p });
-    // }
+    const locName = localStorage.getItem('locationName');
+
+    console.log(locName);
+    const p = new HttpParams().set('key', this.apiKey).set('q', locName);
+    req = req.clone({ params: p });
 
     return next.handle(req);
   }

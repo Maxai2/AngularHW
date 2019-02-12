@@ -13,20 +13,26 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  currentWeather(): Observable<CurWeather> {
-    // return this.http.get<CurWeather>(`${this.url}current.json?`).pipe(tap((result) => {
-    //   localStorage.setItem('name', result.name);
-    // }));
 
+  currentWeather(): Observable<CurWeather> {
     return this.http.get<CurWeather>(`${this.url}current.json?`).pipe(map((data) => {
+
       const res = new CurWeather(
-        data.name,
-        data.region,
-        data.country,
-        data.tz_id,
-        data.icon,
-        data.temp_c,
-        data.temp_f);
+        data.location['name'],
+        data.location['region'],
+        data.location['country'],
+        data.location['tz_id'],
+        data.current.condition['icon'],
+        data.current['temp_c'],
+        data.current['temp_f']
+        // data.name,
+        // data.region,
+        // data.country,
+        // data.tz_id,
+        // data.icon,
+        // data.temp_c,
+        // data.temp_f
+        );
 
       return res;
     }));

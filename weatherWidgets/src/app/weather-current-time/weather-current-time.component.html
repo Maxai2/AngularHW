@@ -1,9 +1,9 @@
 <div class='weathWidget'>
-  <small>Cherni Gorod, AZ</small>
+  <small>{{weather.name}}, {{weather.country}}, {{weather.tz_id}}</small>
   <button>x</button>
   <a href="/curTime">
-    <img src="//cdn.apixu.com/weather/64x64/day/122.png">
+    <img src='{{weather.icon}}'>
 
-    <small>6 °c (42.8 °f)</small>
+    <small>{{weather.temp_c}} °c ({{weather.temp_f}} °f)</small>
   </a>
 </div>

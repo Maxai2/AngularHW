@@ -3,7 +3,7 @@
 
   <h4>This site show weather for your location... Please enter location</h4>
   <input type="text" [(ngModel)]='locName'>
-  <button [disabled]='!locName'>Search</button>
+  <button [disabled]='!locName' (click)='search()'>Search</button>
 </div>
 
 <hr>

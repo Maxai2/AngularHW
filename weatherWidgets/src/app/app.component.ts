@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { WeatherService } from './services/weather.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  private locName: string;
+  public locName: string;
+
+  constructor(
+    private router: Router) {}
+
+    search() {
+      localStorage.setItem('locationName', this.locName);
+      this.router.navigate(['curTime']);
+      window.location.reload();
+    }
 }
