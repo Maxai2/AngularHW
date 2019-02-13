@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
 import { Router } from '@angular/router';
 
@@ -7,15 +7,21 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
-  public locName: string;
+export class AppComponent implements OnInit {
 
-  constructor(
-    private router: Router) {}
+  public locName: string;
+  
+  constructor() {}
+    
+    ngOnInit(): void {
+      const locStorName = localStorage.getItem('locationName');
+      if (locStorName) {
+        this.locName = locStorName; 
+      }
+    }
 
     search() {
       localStorage.setItem('locationName', this.locName);
-      this.router.navigate(['curTime']);
       window.location.reload();
     }
 }

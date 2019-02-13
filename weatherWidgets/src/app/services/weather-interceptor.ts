@@ -13,10 +13,16 @@ export class WeatherInterceptor implements HttpInterceptor {
 
     const locName = localStorage.getItem('locationName');
 
-    console.log(locName);
-    const p = new HttpParams().set('key', this.apiKey).set('q', locName);
-    req = req.clone({ params: p });
+    let p = new HttpParams().set('key', this.apiKey).set('q', locName);
 
+    const days = localStorage.getItem('days');
+
+    if (days) {
+      p = p.set('days', days);
+    }
+
+    req = req.clone({ params: p });
+    console.log(req);
     return next.handle(req);
   }
 }
