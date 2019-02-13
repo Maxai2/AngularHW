@@ -1,3 +1,7 @@
+.weather5Days {
+  width: 400px;
+  margin: 0 auto;
+}
 .weather5Days h4 {
   font-size: 20px;
   color: #41403c;
@@ -13,5 +17,38 @@
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
-  background-color: cornflowerblue;
+  background-image: url('../../assets/4_widget3.png');
+  color: #fff;
+  display: grid;
+  grid-template-rows: 1fr 0.5fr 1fr;
+  grid-template-columns: 2fr 1fr;
+}
+.weather5Days .weather5DaysContainer .weathIconText {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  width: 50%;
+  float: left;
+  padding: 15px 15px 5px 15px;
+  font-size: 20px;
+}
+.weather5Days .weather5DaysContainer .weathIconText img {
+  vertical-align: middle;
+  border: 0;
+}
+.weather5Days .weather5DaysContainer .weatherDetails {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto 0;
+  line-height: 1.2;
+}
+.weather5Days .weather5DaysContainer .celDeg {
+  grid-column: 2;
+  grid-row: 2;
+  text-align: center;
+  font-size: 200%;
+  line-height: 1em;
 }
