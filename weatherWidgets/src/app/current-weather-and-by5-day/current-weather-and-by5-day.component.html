@@ -1,13 +1,13 @@
 <div class='weather5Days'>
-  <h4>Baki Azerbaijan</h4>
+  <h4>{{weather.region}} {{weather.country}}</h4>
 
   <div class="weather5DaysContainer">
-    <!-- <div class="apixu-weather-todays-stats-big-pict">
-      <img src="//cdn.apixu.com/weather/128x128/day/122.png">
-      <span>Overcast</span>
+    <div class="apixu-weather-todays-stats-big-pict">
+      <img src='{{weather.icon}}'>
+      <span>{{weather.text}}</span>
     </div>
 
-    <div class="">
+    <!--<div class="">
       <span>Wind: 5.6 mph</span>
       <span>Precip: 0.0 in</span>
       <span>Pressure: 30.7 in</span>

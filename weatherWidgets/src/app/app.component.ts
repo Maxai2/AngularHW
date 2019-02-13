@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   public locName: string;
-  
+
   constructor() {}
-    
+
     ngOnInit(): void {
       const locStorName = localStorage.getItem('locationName');
       if (locStorName) {
-        this.locName = locStorName; 
+        this.locName = locStorName;
       }
     }
 

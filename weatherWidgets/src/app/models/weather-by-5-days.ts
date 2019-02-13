@@ -5,6 +5,7 @@ export class WeatherBy5Days {
         public region: string,
         public country: string,
         public icon: string,
+        public text: string,
         public wind_mph: number,
         public precip_mm: number,
         public pressure_mb: number,

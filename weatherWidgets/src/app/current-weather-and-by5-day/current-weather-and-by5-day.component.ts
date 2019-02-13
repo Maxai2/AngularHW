@@ -18,7 +18,8 @@ export class CurrentWeatherAndBy5DayComponent implements OnInit {
       (result: WeatherBy5Days) => {
         this.weather = result;
         console.log(result);
-      });
+      }
+    );
   }
 
 }

@@ -30,7 +30,6 @@ export class WeatherService {
         data['current']['temp_f']
         );
 
-      console.log(res);
       return res;
     }));
   }
@@ -44,6 +43,7 @@ export class WeatherService {
           data['location']['region'],
           data['location']['country'],
           data['current']['condition']['icon'],
+          data['current']['condition']['text'],
           data['current']['wind_mph'],
           data['current']['precip_mm'],
           data['current']['pressure_mb'],
