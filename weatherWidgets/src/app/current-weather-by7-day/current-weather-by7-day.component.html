@@ -1,5 +1,27 @@
-<p>
-  current-weather-by7-day works!
-</p>
+<div class='weatherByWeek'>
+  <h3>Weather in {{weather.name}}, {{weather.region}}, {{weather.country}} this weekend</h3>
 
-<!--https://pcvector.net/scripts/tabs/278-ajax-vkladki.html-->
+  <ul>
+    <li *ngFor='let i of [0,1,2,3,4,5,6]' (click)='weatherDay(i)'>{{weather.weatherBy7DaysList[i].date | date: 'EEE MM/yy'}}</li>
+  </ul>
+
+  <table>
+    <tr>
+      <td class='riseSet'>
+        Sunrise: {{dayDetail.sunrise}}
+        <br>
+        Sunset: {{dayDetail.sunset}}
+      </td>
+      <td class='riseSet'>
+        Moonrise: {{dayDetail.moonrise}}
+        <br>
+        Moonset: {{dayDetail.moonset}}
+      </td>
+      <td [ngStyle]="{'background-color': maxTemp}">Max:<br>{{dayDetail.maxtemp_c}} °c</td>
+      <td [ngStyle]="{'background-color': minTemp}">Min:<br>{{dayDetail.mintemp_c}} °c</td>
+      <td [ngStyle]="{'background-color': avgTemp}">Avg:<br>{{dayDetail.avgtemp_c}} °c</td>
+      <td>Precip:<br>{{dayDetail.totalprecip_mm}} mm</td>
+      <td>Max Wind:<br>{{dayDetail.maxwind_kph}} kph</td>
+    </tr>
+  </table>
+</div>

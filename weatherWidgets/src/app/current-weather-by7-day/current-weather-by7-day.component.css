@@ -1,0 +1,43 @@
+.weatherByWeek {
+  width: 700px;
+  margin: 0 auto;
+}
+.weatherByWeek h3 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.weatherByWeek ul {
+  border: none;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+.weatherByWeek ul li {
+  float: left;
+  background-color: #a5d1ab;
+  padding: 10px 15px;
+  margin: 0 1px;
+  border-radius: 3px 3px 0 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+.weatherByWeek ul li:hover {
+  color: white;
+}
+.weatherByWeek table {
+  border-bottom: 2px solid #ec972f;
+  width: 100%;
+  font-size: 85%;
+  border-collapse: collapse;
+}
+.weatherByWeek table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  font-size: 12px;
+}
+.weatherByWeek table .riseSet {
+  width: 150px;
+}

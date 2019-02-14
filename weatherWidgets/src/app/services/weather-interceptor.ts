@@ -26,7 +26,6 @@ export class WeatherInterceptor implements HttpInterceptor {
     // }
 
     req = req.clone({ params: p });
-    console.log(req.urlWithParams);
     return next.handle(req);
   }
 }
