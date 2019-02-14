@@ -10,6 +10,7 @@ import { WeatherService } from '../services/weather.service';
 export class CurrentWeatherAndBy5DayComponent implements OnInit {
 
   weather: WeatherBy5Days;
+  iNumber = [0, 1, 2, 3, 4];
 
   constructor(private weatherService: WeatherService) { }
 

@@ -27,6 +27,9 @@
 .weatherByWeek ul li:hover {
   color: white;
 }
+.weatherByWeek ul .active {
+  background-color: #339900;
+}
 .weatherByWeek table {
   border-bottom: 2px solid #ec972f;
   width: 100%;

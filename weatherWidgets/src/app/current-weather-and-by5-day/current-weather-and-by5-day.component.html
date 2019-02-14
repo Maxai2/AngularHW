@@ -17,27 +17,15 @@
 
     <table>
       <tr>
-        <td>{{weather.forecastList[0].date | date: 'EEE'}}</td>
-        <td>{{weather.forecastList[1].date | date: 'EEE'}}</td>
-        <td>{{weather.forecastList[2].date | date: 'EEE'}}</td>
-        <td>{{weather.forecastList[3].date | date: 'EEE'}}</td>
-        <td>{{weather.forecastList[4].date | date: 'EEE'}}</td>
-      </tr>
-      
-      <tr>
-        <td><img src='{{weather.forecastList[0].icon}}'></td>
-        <td><img src='{{weather.forecastList[1].icon}}'></td>
-        <td><img src='{{weather.forecastList[2].icon}}'></td>
-        <td><img src='{{weather.forecastList[3].icon}}'></td>
-        <td><img src='{{weather.forecastList[4].icon}}'></td>
+        <td *ngFor='let i of iNumber'>{{weather.forecastList[i].date | date: 'EEE'}}</td>
       </tr>
 
       <tr>
-        <td>{{weather.forecastList[0].avgtemp_c}} °c</td>
-        <td>{{weather.forecastList[1].avgtemp_c}} °c</td>
-        <td>{{weather.forecastList[2].avgtemp_c}} °c</td>
-        <td>{{weather.forecastList[3].avgtemp_c}} °c</td>
-        <td>{{weather.forecastList[4].avgtemp_c}} °c</td>
+        <td *ngFor='let i of iNumber'><img src='{{weather.forecastList[i].icon}}'></td>
+      </tr>
+
+      <tr>
+        <td *ngFor='let i of iNumber'>{{weather.forecastList[i].avgtemp_c}} °c</td>
       </tr>
     </table>
 </div>

@@ -2,7 +2,7 @@
   <h3>Weather in {{weather.name}}, {{weather.region}}, {{weather.country}} this weekend</h3>
 
   <ul>
-    <li *ngFor='let i of [0,1,2,3,4,5,6]' (click)='weatherDay(i)'>{{weather.weatherBy7DaysList[i].date | date: 'EEE MM/yy'}}</li>
+    <li *ngFor='let i of iNumber' (click)="weatherDay(i)" [class.active]='i === dayNumTemp' id={{i}} >{{weather.weatherBy7DaysList[i].date | date: 'EEE MM/yy'}}</li>
   </ul>
 
   <table>
@@ -20,8 +20,8 @@
       <td [ngStyle]="{'background-color': maxTemp}">Max:<br>{{dayDetail.maxtemp_c}} °c</td>
       <td [ngStyle]="{'background-color': minTemp}">Min:<br>{{dayDetail.mintemp_c}} °c</td>
       <td [ngStyle]="{'background-color': avgTemp}">Avg:<br>{{dayDetail.avgtemp_c}} °c</td>
-      <td>Precip:<br>{{dayDetail.totalprecip_mm}} mm</td>
-      <td>Max Wind:<br>{{dayDetail.maxwind_kph}} kph</td>
+      <td [ngStyle]="{'background-color': totalprecip}">Precip:<br>{{dayDetail.totalprecip_mm}} mm</td>
+      <td [ngStyle]="{'background-color': maxwind}">Max Wind:<br>{{dayDetail.maxwind_kph}} kph</td>
     </tr>
   </table>
 </div>
