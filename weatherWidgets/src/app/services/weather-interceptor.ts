@@ -17,15 +17,16 @@ export class WeatherInterceptor implements HttpInterceptor {
       locName = 'Baku';
     }
 
-    let p = new HttpParams().set('key', this.apiKey).set('q', locName);
+    const p = new HttpParams().set('key', this.apiKey).set('q', locName);
 
-    const days = localStorage.getItem('days');
+    // const days = localStorage.getItem('days');
 
-    if (days) {
-      p = p.set('days', days);
-    }
+    // if (days) {
+    //   p = p.set('days', days);
+    // }
 
     req = req.clone({ params: p });
+    console.log(req.urlWithParams);
     return next.handle(req);
   }
 }

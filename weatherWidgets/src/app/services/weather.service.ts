@@ -2,9 +2,9 @@ import { CurWeather } from '../models/cur-weather';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { WeatherBy5Days } from '../models/weather-by-5-days';
-import { WeatherByDay } from '../models/weather-by-day';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { WeatherBy5Days, WeatherByDay } from '../models/weather-by-5-days';
+import { WeatherBy7Days, WeatherByDayFrom7 } from '../models/weather-by7-days';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class WeatherService {
   currentWeather(): Observable<CurWeather> {
     return this.http.get<CurWeather>(`${this.url}current.json?`).pipe(map((data) => {
 
-      localStorage.clear();
+      localStorage.removeItem('days');
 
       const res = new CurWeather(
         data['location']['name'],
@@ -35,9 +35,25 @@ export class WeatherService {
   }
 
   weatherBy5Days(): Observable<WeatherBy5Days> {
-    return this.http.get<WeatherBy5Days>(`${this.url}forecast.json?`).pipe(map((data) => {
+    return this.http.get<WeatherBy5Days>(`${this.url}forecast.json?days=5`).pipe(map((data) => {
 
-      localStorage.setItem('days', '5');
+      // localStorage.setItem('days', '5');
+
+      const weathList = Array<WeatherByDay>();
+
+      data['forecast']['forecastday'].forEach(w => {
+        weathList.push(new WeatherByDay(
+            w['date'],
+            w['day']['condition']['icon'],
+            w['day']['avgtemp_c']));
+        });
+
+      // for (let i = 0; i < 5; i++) {
+      // weathList.push(new WeatherByDay(
+      //   data['forecast']['forecastday'][i]['date'],
+      //   data['forecast']['forecastday'][i]['day']['condition']['icon'],
+      //   data['forecast']['forecastday'][i]['day']['avgtemp_c']));
+      // }
 
       const res = new WeatherBy5Days(
           data['location']['region'],
@@ -48,29 +64,40 @@ export class WeatherService {
           data['current']['precip_mm'],
           data['current']['pressure_mb'],
           data['current']['temp_c'],
-          new Array<WeatherByDay>(...[
-            new WeatherByDay(
-              data['forecast']['forecastday'][0]['date'],
-              data['forecast']['forecastday'][0]['day']['condition']['icon'],
-              data['forecast']['forecastday'][0]['day']['avgtemp_c']),
-            new WeatherByDay(
-              data['forecast']['forecastday'][1]['date'],
-              data['forecast']['forecastday'][1]['day']['condition']['icon'],
-              data['forecast']['forecastday'][1]['day']['avgtemp_c']),
-            new WeatherByDay(
-              data['forecast']['forecastday'][2]['date'],
-              data['forecast']['forecastday'][2]['day']['condition']['icon'],
-              data['forecast']['forecastday'][2]['day']['avgtemp_c']),
-            new WeatherByDay(
-              data['forecast']['forecastday'][3]['date'],
-              data['forecast']['forecastday'][3]['day']['condition']['icon'],
-              data['forecast']['forecastday'][3]['day']['avgtemp_c']),
-            new WeatherByDay(
-              data['forecast']['forecastday'][4]['date'],
-              data['forecast']['forecastday'][4]['day']['condition']['icon'],
-              data['forecast']['forecastday'][4]['day']['avgtemp_c'])
-            ]
-          )
+          weathList
+      );
+
+      return res;
+    }));
+  }
+
+  weatherBy7Days(): Observable<WeatherBy7Days> {
+    return this.http.get<WeatherBy7Days>(`${this.url}forecast.json?days=7`).pipe(map((data) => {
+
+      // localStorage.setItem('days', '7');
+
+      const weathList = Array<WeatherByDayFrom7>();
+
+      data['forecast']['forecastday'].forEach(w => {
+        weathList.push(new WeatherByDayFrom7(
+            w['date'],
+            w['astro']['sunrise'],
+            w['astro']['sunset'],
+            w['astro']['moonrise'],
+            w['astro']['moonset'],
+            w['day']['maxtemp_c'],
+            w['day']['mintemp_c'],
+            w['day']['avgtemp_c'],
+            w['day']['totalprecip_mm'],
+            w['day']['maxwind_kph']
+            ));
+        });
+
+      const res = new WeatherBy7Days(
+          data['location']['name'],
+          data['location']['region'],
+          data['location']['country'],
+          weathList
       );
 
       return res;

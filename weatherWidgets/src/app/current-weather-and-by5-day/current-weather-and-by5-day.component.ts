@@ -17,7 +17,6 @@ export class CurrentWeatherAndBy5DayComponent implements OnInit {
     this.weatherService.weatherBy5Days().subscribe(
       (result: WeatherBy5Days) => {
         this.weather = result;
-        console.log(result);
       }
     );
   }

@@ -17,7 +17,6 @@ export class WeatherCurrentTimeComponent implements OnInit {
     this.weatherService.currentWeather().subscribe(
       (result: CurWeather) => {
         this.weather = result;
-        console.log(result);
       }
     );
   }

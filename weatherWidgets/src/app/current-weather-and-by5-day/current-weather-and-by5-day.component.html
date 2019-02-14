@@ -8,79 +8,36 @@
     </div>
 
     <div class="weatherDetails">
-      <span>Wind: 5.6 mph</span>
-      <span>Precip: 0.0 in</span>
-      <span>Pressure: 30.7 in</span>
+      <span>Wind: {{weather.wind_mph}} mph</span>
+      <span>Precip: {{weather.precip_mm}} in</span>
+      <span>Pressure: {{weather.pressure_mb}} in</span>
     </div>
 
-    <label class="celDeg">
-      41.0°f
-    </label>
+    <label class="celDeg">{{weather.temp_c}} °c</label>
 
-    <!-- <div class="apixu-weather-forecast awe_days_5 awecf">
-      <div class="apixu-weather-forecast-day">
-        <div class="apixu - weather - forecast - day - abbr">
-          Thu
-        </div>
-      <div class="apixu-weather-forecast-day-abbr">
-        <div class="">
-          <img src="//cdn.apixu.com/weather/64x64/day/116.png">
-        </div>
-      </div>
-      <div class="apixu - weather - forecast - day - temp">
-        47.0<span> °f</span>
-      </div>
-    </div>
-    <div class="apixu-weather-forecast-day">
-      <div class="apixu - weather - forecast - day - abbr">
-        Fri
-      </div>
-      <div class="apixu-weather-forecast-day-abbr">
-        <div class="">
-          <img src="//cdn.apixu.com/weather/64x64/day/116.png">
-        </div>
-      </div>
-      <div class="apixu - weather - forecast - day - temp">
-        47.8<span> °f</span>
-      </div>
-    </div>
-    <div class="apixu-weather-forecast-day">
-      <div class="apixu - weather - forecast - day - abbr">
-        Sat
-      </div>
-      <div class="apixu-weather-forecast-day-abbr">
-        <div class="">
-          <img src="//cdn.apixu.com/weather/64x64/day/176.png">
-        </div>
-      </div>
-      <div class="apixu - weather - forecast - day - temp">
-        43.8<span> °f</span>
-      </div>
-    </div>
-    <div class="apixu-weather-forecast-day">
-      <div class="apixu - weather - forecast - day - abbr">
-        Sun
-      </div>
-      <div class="apixu-weather-forecast-day-abbr">
-        <div class="">
-          <img src="//cdn.apixu.com/weather/64x64/day/266.png">
-        </div>
-      </div>
-      <div class="apixu - weather - forecast - day - temp">
-        39.3<span> °f</span>
-      </div>
-    </div>
-    <div class="apixu-weather-forecast-day">
-      <div class="apixu - weather - forecast - day - abbr">
-        Mon
-      </div>
-      <div class="apixu-weather-forecast-day-abbr">
-        <div class="">
-          <img src="//cdn.apixu.com/weather/64x64/day/116.png">
-        </div>
-      </div>
-      <div class="apixu - weather - forecast - day - temp">
-        47.2<span> °f</span>
-      </div>
-    </div> -->
+    <table>
+      <tr>
+        <td>{{weather.forecastList[0].date | date: 'EEE'}}</td>
+        <td>{{weather.forecastList[1].date | date: 'EEE'}}</td>
+        <td>{{weather.forecastList[2].date | date: 'EEE'}}</td>
+        <td>{{weather.forecastList[3].date | date: 'EEE'}}</td>
+        <td>{{weather.forecastList[4].date | date: 'EEE'}}</td>
+      </tr>
+      
+      <tr>
+        <td><img src='{{weather.forecastList[0].icon}}'></td>
+        <td><img src='{{weather.forecastList[1].icon}}'></td>
+        <td><img src='{{weather.forecastList[2].icon}}'></td>
+        <td><img src='{{weather.forecastList[3].icon}}'></td>
+        <td><img src='{{weather.forecastList[4].icon}}'></td>
+      </tr>
+
+      <tr>
+        <td>{{weather.forecastList[0].avgtemp_c}} °c</td>
+        <td>{{weather.forecastList[1].avgtemp_c}} °c</td>
+        <td>{{weather.forecastList[2].avgtemp_c}} °c</td>
+        <td>{{weather.forecastList[3].avgtemp_c}} °c</td>
+        <td>{{weather.forecastList[4].avgtemp_c}} °c</td>
+      </tr>
+    </table>
 </div>

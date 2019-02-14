@@ -1,4 +1,10 @@
-import { WeatherByDay } from './weather-by-day';
+export class WeatherByDay {
+    constructor(
+        public date: Date,
+        public icon: string,
+        public avgtemp_c: number
+    ) {}
+}
 
 export class WeatherBy5Days {
     constructor(
