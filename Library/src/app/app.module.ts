@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +11,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { EditNewBookComponent } from './edit-new-book/edit-new-book.component';
 import { EditNewVisitorComponent } from './edit-new-visitor/edit-new-visitor.component';
 import { NewCardComponent } from './new-card/new-card.component';
+import { MaterialAppModule } from './ngmaterial.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +26,9 @@ import { NewCardComponent } from './new-card/new-card.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialAppModule
   ],
   providers: [],
   bootstrap: [AppComponent]

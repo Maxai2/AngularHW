@@ -1,0 +1,20 @@
+.booksDiv {
+  display: grid;
+  grid-template-rows: repeat(auto, 4);
+}
+.booksDiv .headNewBookDiv h4 {
+  float: left;
+  margin: 0;
+}
+.booksDiv .headNewBookDiv button {
+  float: right;
+}
+.booksDiv hr {
+  width: 100%;
+}
+.booksDiv .sortSearch .sortDiv {
+  float: left;
+}
+.booksDiv .sortSearch .searchDiv {
+  float: right;
+}
