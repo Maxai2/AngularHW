@@ -1,7 +1,9 @@
+@padding: 100px;
+
 .wrap
 {
   display: grid;
-  grid-template-columns: 50px auto 50px;
+  grid-template-columns: @padding auto @padding;
 
   h2
   {
@@ -14,7 +16,7 @@
 
     mat-toolbar
     {
-      padding: 0 50px;
+      padding: 0 @padding;
       height: min-content;
 
       a
