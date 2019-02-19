@@ -7,13 +7,13 @@
 
   <div class='sortSearch'>
     <div class='sortDiv'>
-      <label>Sort by:</label>
-      <select>
-        <option>qwertyu</option>
-        <option>qwertyu</option>
-        <option>qwertyu</option>
-        <option>qwertyu</option>
-      </select>
+      <mat-form-field>
+        <mat-select placeholder='Sort by'>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
       <button mat-button>Sort</button>
     </div>
 

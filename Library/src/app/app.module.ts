@@ -12,6 +12,7 @@ import { EditNewBookComponent } from './edit-new-book/edit-new-book.component';
 import { EditNewVisitorComponent } from './edit-new-visitor/edit-new-visitor.component';
 import { NewCardComponent } from './new-card/new-card.component';
 import { MaterialAppModule } from './ngmaterial.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MaterialAppModule } from './ngmaterial.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MaterialAppModule
+    MaterialAppModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
