@@ -18,8 +18,8 @@
 .booksDiv .sortSearch .sortDiv {
   float: left;
 }
-.booksDiv .sortSearch .sortDiv mat_option {
-  color: black;
+.booksDiv .sortSearch .sortDiv .mat-form-field-empty.mat-form-field-label {
+  color: green;
 }
 .booksDiv .sortSearch .searchDiv {
   float: right;

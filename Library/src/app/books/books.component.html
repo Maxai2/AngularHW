@@ -9,17 +9,18 @@
     <div class='sortDiv'>
       <mat-form-field>
         <mat-select placeholder='Sort by'>
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
-              </mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-button>Sort</button>
     </div>
 
     <div class='searchDiv'>
-      <label>Search:</label>
-      <input>
+      <mat-form-field>
+        <input matInput placeholder='Search'>
+      </mat-form-field>
       <button mat-button>Search</button>
     </div>
   </div>
