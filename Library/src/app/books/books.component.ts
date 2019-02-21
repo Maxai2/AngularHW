@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { BookService } from '../services/book.service';
+import { Book } from '../models/book';
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-books',
@@ -6,15 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./books.component.less']
 })
 
-export class BooksComponent implements OnInit {
+export class BooksComponent implements OnInit, AfterViewInit {
 
-  tests: string[] = [
-    'qwertyu', 'asdfgh', 'zxcvvb'
+  sortFilter: string[] = [
+    'author', 'count', 'P. Count', 'Pub. Place', 'Pub. Year', 'title'
   ];
+  books = new MatTableDataSource;
 
-  constructor() { }
+  @ViewChild(MatSort) sort: MatSort;
+
+  displayedColumns: string[] = ['id', 'title', 'author', 'publishYear', 'publishPlace', 'pageCount', 'countInLibrary'];
+
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
+    this.books = new MatTableDataSource(this.bookService.getBooks());
   }
 
+  ngAfterViewInit(): void {
+    this.books.sort = this.sort;
+  }
+
+  sortValue(value: string) {
+    console.log(value);
+  }
+
+  applyFilter(filterValue: string) {
+    this.books.filter = filterValue.trim().toLowerCase();
+  }
 }

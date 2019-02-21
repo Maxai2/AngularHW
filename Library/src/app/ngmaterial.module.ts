@@ -4,6 +4,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
 imports: [
@@ -11,14 +13,18 @@ imports: [
   MatToolbarModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule,
+  MatSortModule
 ],
 exports: [
   MatButtonModule,
   MatToolbarModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule,
+  MatSortModule
 ]
 })
 export class MaterialAppModule { }

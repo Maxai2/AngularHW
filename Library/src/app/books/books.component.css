@@ -1,6 +1,6 @@
 .booksDiv {
   display: grid;
-  grid-template-rows: repeat(auto, 4);
+  grid-template-rows: auto auto auto 20px 100px;
 }
 .booksDiv .headNewBookDiv {
   margin-top: 20px;
@@ -8,19 +8,35 @@
 .booksDiv .headNewBookDiv h4 {
   float: left;
   margin: 0;
+  padding-top: 10px;
 }
 .booksDiv .headNewBookDiv button {
   float: right;
+  background-color: #212121;
 }
 .booksDiv hr {
   width: 100%;
 }
+.booksDiv .sortSearch mat-form-field {
+  background-color: #212121;
+  border-radius: 7px;
+  padding: 5px;
+}
 .booksDiv .sortSearch .sortDiv {
   float: left;
 }
-.booksDiv .sortSearch .sortDiv .mat-form-field-empty.mat-form-field-label {
-  color: green;
-}
 .booksDiv .sortSearch .searchDiv {
   float: right;
+}
+.booksDiv table {
+  grid-row: 5;
+}
+.booksDiv table th,
+.booksDiv table td {
+  border: 1px solid #4a4a4a;
+  text-align: center;
+  padding: 5px;
+}
+.booksDiv table th {
+  color: #108a8b;
 }

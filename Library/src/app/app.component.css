@@ -1,6 +1,6 @@
 .wrap {
   display: grid;
-  grid-template-columns: 50px auto 50px;
+  grid-template-columns: 150px auto 150px;
 }
 .wrap h2 {
   grid-column: 2;
@@ -9,18 +9,18 @@
   grid-column: 1 / span 3;
 }
 .wrap .routes mat-toolbar {
-  padding: 0 50px;
+  padding: 0 150px;
   height: min-content;
 }
 .wrap .routes mat-toolbar a {
   border: 0.5px solid #4a4a4a;
   border-radius: 0;
-  color: #eff2df;
+  color: #b2b2b2;
   font-size: 15px;
   padding: 5px 25px;
 }
 .wrap .routes mat-toolbar .active {
-  border-bottom: 1px solid #108a8b;
+  border-bottom: 4px solid #108a8b;
 }
 .wrap .container {
   grid-column: 2;
