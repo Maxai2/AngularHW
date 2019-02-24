@@ -40,3 +40,6 @@
 .booksDiv table th {
   color: #108a8b;
 }
+.booksDiv table .mat-row :hover {
+  background-color: red;
+}
