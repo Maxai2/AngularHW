@@ -1,7 +1,8 @@
+import { EditNewBookComponent } from './../edit-new-book/edit-new-book.component';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-books',
@@ -18,9 +19,14 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
+  @ViewChild(MatMenuTrigger)
+  contextMenu: MatMenuTrigger;
+
   displayedColumns: string[] = ['id', 'title', 'author', 'publishYear', 'publishPlace', 'pageCount', 'countInLibrary'];
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private bookService: BookService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.books = new MatTableDataSource(this.bookService.getBooks());
@@ -36,5 +42,14 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   applyFilter(filterValue: string) {
     this.books.filter = filterValue.trim().toLowerCase();
+  }
+
+  editBook(bookId: number) {
+    const book = this.bookService.getBook(bookId);
+
+    const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 }

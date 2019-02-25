@@ -30,6 +30,7 @@
 }
 .booksDiv table {
   grid-row: 5;
+  cursor: pointer;
 }
 .booksDiv table th,
 .booksDiv table td {
@@ -40,6 +41,9 @@
 .booksDiv table th {
   color: #108a8b;
 }
-.booksDiv table .mat-row :hover {
-  background-color: red;
+.booksDiv table .element-row:hover {
+  background: #ada7a7;
+}
+.booksDiv table .element-row:selected {
+  background: #5c5959;
 }

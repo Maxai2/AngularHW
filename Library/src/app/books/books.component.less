@@ -53,6 +53,7 @@
   table
   {
     grid-row: 5;
+    cursor: pointer;
 
     th, td
     {
@@ -66,9 +67,12 @@
       color: #108a8b;
     }
 
-    .mat-row :hover
-    {
-      background-color: red;
+    .mat-row.hovered {
+      background: #ada7a7;;
+    }
+    
+    .mat-row.highlighted {
+      background: #999;
     }
   }
 }
