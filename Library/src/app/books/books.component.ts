@@ -2,7 +2,7 @@ import { EditNewBookComponent } from './../edit-new-book/edit-new-book.component
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
-import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatSort, MatDialog, MatMenuTrigger } from '@angular/material';
 
 @Component({
   selector: 'app-books',
@@ -19,8 +19,11 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  @ViewChild(MatMenuTrigger)
-  contextMenu: MatMenuTrigger;
+  @ViewChild(MatMenuTrigger) contextMenu: MatMenuTrigger;
+
+  book: Book;
+
+  contextMenuPosition = { x: '0px', y: '0px' };
 
   displayedColumns: string[] = ['id', 'title', 'author', 'publishYear', 'publishPlace', 'pageCount', 'countInLibrary'];
 
@@ -44,12 +47,24 @@ export class BooksComponent implements OnInit, AfterViewInit {
     this.books.filter = filterValue.trim().toLowerCase();
   }
 
-  editBook(bookId: number) {
-    const book = this.bookService.getBook(bookId);
-
+  editBook(book: Book) {
+    // const book = this.bookService.getBook(bookId);
+    console.log(book);
     const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
+  }
+
+  onContextMenu(event: MouseEvent, book: Book) {
+    event.preventDefault();
+    this.book = book;
+    console.log(book);
+    console.log(this.book);
+    
+    this.contextMenuPosition.x = event.clientX + 'px';
+    this.contextMenuPosition.y = event.clientY + 'px';
+    this.contextMenu.menuData = { 'item': book };
+    this.contextMenu.openMenu();
   }
 }
