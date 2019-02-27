@@ -1,7 +1,7 @@
 <form [formGroup]='bookForm' (ngSubmit)='onSubmit()'>
   <div>
       <mat-form-field>
-        <input matInput formControlName='title' placeholder="Name">
+        <input matInput formControlName='title' placeholder="Title" md-detect-hidden="sdfdsf">
       </mat-form-field>
   </div>
   <div>
@@ -11,29 +11,25 @@
   </div>
   <div>
     <mat-form-field>
-      <input matInput type='number' formControlName='publishYear' placeholder="publishYear">
+      <input matInput type='number' formControlName='publishYear' placeholder="Publish year">
     </mat-form-field>
-  </div>
-  <div>
-    <label>Gender: </label>
-    <mat-radio-group formControlName='gender'>
-      <mat-radio-button [value]='true'>Male</mat-radio-button>
-      <mat-radio-button [value]='false'>Female</mat-radio-button>
-    </mat-radio-group>
   </div>
   <div>
     <mat-form-field>
-      <mat-select placeholder="Color" formControlName='color'>
-        <mat-option value='black'>black</mat-option>
-        <mat-option value='brown'>brown</mat-option>
-        <mat-option value='yellow'>yellow</mat-option>
-        <mat-option value='white'>white</mat-option>
-        <mat-option value='ginger'>ginger</mat-option>
-      </mat-select>
+      <input matInput formControlName='publishPlace' placeholder="Publish place">
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button>Close</button>
+    <mat-form-field>
+      <input matInput type='number' formControlName='pageCount' placeholder="Page count">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput type='number' formControlName='countInLibrary' placeholder="Count in Library">
+    </mat-form-field>
+  </div>
+  <div>
     <button mat-raised-button color="primary" type="submit">Save</button>
   </div>
 </form>
