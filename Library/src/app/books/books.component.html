@@ -29,91 +29,91 @@
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.id}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.title}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="author">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.author}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="publishYear">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Pub. Year </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.publishYear}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="publishPlace">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Pub Place </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.publishPlace}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="pageCount">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> P. count </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.pageCount}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="countInLibrary">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Count </th>
-      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book)">
+      <td mat-cell *matCellDef="let book" (contextmenu)="onContextMenu($event, book.id)">
         {{book.countInLibrary}}
         <div style="position: fixed"
           [style.left]="contextMenuPosition.x"
           [style.top]="contextMenuPosition.y"
           [matMenuTriggerFor]="contextMenu"
-          [matMenuTriggerData]="{item: book}">
+          [matMenuTriggerData]="{item: book.id}">
         </div>
       </td>
     </ng-container>
@@ -135,9 +135,9 @@
 
   </table>
   <mat-menu #contextMenu="matMenu">
-    <ng-template matMenuContent let-item="book">
-      <button mat-menu-item (click)="editBook(book)">Edit</button>
-      <button mat-menu-item (click)="onContextMenuAction2()">Delete</button>
+    <ng-template matMenuContent let-item="item">
+      <button mat-menu-item (click)="editBook(item)">Edit</button>
+      <button mat-menu-item (click)="deleteBook(item)">Delete</button>
     </ng-template>
   </mat-menu>
 
