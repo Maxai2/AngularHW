@@ -47,4 +47,8 @@ export class BookService {
   removeBook(bookId: number) {
     this.books.splice(this.books.findIndex(b => b.id === bookId), 1);
   }
+
+  getNewLastId() {
+    return this.books.length + 1;
+  }
 }

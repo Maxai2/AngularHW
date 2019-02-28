@@ -54,7 +54,10 @@ export class BooksComponent implements OnInit, AfterViewInit {
   }
 
   deleteBook(bookId: number) {
-
+    console.log(bookId);
+    this.bookService.removeBook(bookId);
+    console.log(this.bookService.getBooks());
+    this.books = new MatTableDataSource(this.bookService.getBooks());
   }
 
   onContextMenu(event: MouseEvent, bookId: number) {
