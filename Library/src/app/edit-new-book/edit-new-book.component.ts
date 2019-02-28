@@ -1,17 +1,26 @@
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Book } from '../models/book';
 import { BookService } from '../services/book.service';
+
+export class CustomErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-edit-new-book',
   templateUrl: './edit-new-book.component.html',
   styleUrls: ['./edit-new-book.component.less']
 })
+
 export class EditNewBookComponent implements OnInit {
 
   bookForm: FormGroup;
+  matcher = new CustomErrorStateMatcher();
 
   constructor(
     private fb: FormBuilder,
@@ -24,10 +33,10 @@ export class EditNewBookComponent implements OnInit {
     this.bookForm = this.fb.group({
       title: [this.data.title, Validators.required],
       author: [this.data.author, Validators.required],
-      publishYear: [this.data.publishYear, Validators],
+      publishYear: [this.data.publishYear, [Validators.required, Validators.min(1900)]],
       publishPlace: [this.data.publishPlace, Validators.required],
-      pageCount: [this.data.pageCount, Validators.required],
-      countInLibrary: [this.data.countInLibrary, Validators.required]
+      pageCount: [this.data.pageCount, [Validators.required, Validators.min(5)]],
+      countInLibrary: [this.data.countInLibrary, [Validators.required, Validators.min(1)]]
     });
   }
 

@@ -19,7 +19,12 @@ export class BookService {
     new Book(10, 'Go Programming Blueprints: Build real-world, production-ready solutions in Go using cutting-edge technology and techniques, 2nd Edition', 'Mat Ryer', 2016, 'Packt Publishing', 394, 38)
   ];
 
-  constructor() { }
+  curYear: number;
+
+  constructor() {
+    const tempDate = new Date();
+    this.curYear = tempDate.getFullYear();
+  }
 
   getBooks() {
     return this.books;
@@ -33,22 +38,22 @@ export class BookService {
     this.books.push(book);
   }
 
-  editBook(bookId: number, book: Book) {
-    const editableBook = this.books.find(b => b.id === bookId);
+  // editBook(bookId: number, book: Book) {
+  //   const editableBook = this.books.find(b => b.id === bookId);
 
-    editableBook.author = book.author;
-    editableBook.countInLibrary = book.countInLibrary;
-    editableBook.pageCount = book.pageCount;
-    editableBook.publishPlace = book.publishPlace;
-    editableBook.publishYear = book.publishYear;
-    editableBook.title = book.title;
-  }
+  //   editableBook.author = book.author;
+  //   editableBook.countInLibrary = book.countInLibrary;
+  //   editableBook.pageCount = book.pageCount;
+  //   editableBook.publishPlace = book.publishPlace;
+  //   editableBook.publishYear = book.publishYear;
+  //   editableBook.title = book.title;
+  // }
 
   removeBook(bookId: number) {
     this.books.splice(this.books.findIndex(b => b.id === bookId), 1);
   }
 
   getNewLastId() {
-    return this.books.length + 1;
+    return this.books[this.books.length - 1].id + 1;
   }
 }

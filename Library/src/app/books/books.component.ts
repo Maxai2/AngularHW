@@ -53,6 +53,14 @@ export class BooksComponent implements OnInit, AfterViewInit {
     });
   }
 
+  newBook() {
+    const book = new Book();
+    const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
+
   deleteBook(bookId: number) {
     console.log(bookId);
     this.bookService.removeBook(bookId);

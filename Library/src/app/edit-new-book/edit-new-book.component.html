@@ -1,35 +1,56 @@
 <form [formGroup]='bookForm' (ngSubmit)='onSubmit()'>
   <div>
       <mat-form-field>
-        <input matInput formControlName='title' placeholder="Title" md-detect-hidden="sdfdsf">
+        <input matInput formControlName='title' placeholder="Title" title='{{bookForm.value.title}}' [errorStateMatcher]="matcher">
+        <mat-error *ngIf="!bookForm.hasError('required')">
+          Please enter a title
+        </mat-error>
       </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput formControlName='author' placeholder="Author">
+      <input matInput formControlName='author' placeholder="Author" title='{{bookForm.value.author}}' [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!bookForm.hasError('required')">
+        Please enter a author
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput type='number' formControlName='publishYear' placeholder="Publish year">
+      <input matInput type='number' formControlName='publishYear' placeholder="Publish year" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!bookForm.hasError('required')">
+        Please enter a publish year
+      </mat-error>
+      <mat-error *ngIf="bookForm.hasError('min') && !bookForm.hasError('required')">
+        Please enter value 1900 or more
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput formControlName='publishPlace' placeholder="Publish place">
+      <input matInput formControlName='publishPlace' placeholder="Publish place" title='{{bookForm.value.publishPlace}}' [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!bookForm.hasError('required')">
+        Please enter a publish place
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput type='number' formControlName='pageCount' placeholder="Page count">
+      <input matInput type='number' formControlName='pageCount' placeholder="Page count" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!bookForm.hasError('required')">
+        Please enter a publish place
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <input matInput type='number' formControlName='countInLibrary' placeholder="Count in Library">
+      <input matInput type='number' formControlName='countInLibrary' placeholder="Count in Library" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!bookForm.hasError('required')">
+        Please enter a publish place
+      </mat-error>
     </mat-form-field>
   </div>
-  <div>
-    <button mat-raised-button color="primary" type="submit">Save</button>
+  <div class='buttonDiv'>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!bookForm.valid">Save</button>
   </div>
 </form>
