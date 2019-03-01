@@ -1,7 +1,7 @@
 export class Visitor {
   constructor(
-    public id: number,
-    public fullName: string,
-    public phone: string
+    public id: number = 0,
+    public fullName: string = '',
+    public phone: string = ''
   ) {}
 }

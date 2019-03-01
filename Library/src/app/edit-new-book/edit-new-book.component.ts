@@ -1,15 +1,9 @@
-import { MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Book } from '../models/book';
 import { BookService } from '../services/book.service';
-
-export class CustomErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { CustomErrorStateMatcher } from '../edit-new-visitor/edit-new-visitor.component';
 
 @Component({
   selector: 'app-edit-new-book',

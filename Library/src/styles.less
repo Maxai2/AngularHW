@@ -9,6 +9,89 @@ body
   color: #108a8b;
 }
 
+
+.buttonDiv {
+  display: grid;
+}
+
+.contDiv
+{
+  display: grid;
+  grid-template-rows: auto auto auto 20px 100px;
+
+  .headNewDiv
+  {
+    margin-top: 20px;
+
+    h4
+    {
+      float: left;
+      margin: 0;
+      padding-top: 10px
+    }
+
+    button
+    {
+      float: right;
+      background-color: #212121;
+      // color: #b2b2b2;
+    }
+  }
+
+  hr
+  {
+    width: 100%;
+  }
+
+  .sortSearch
+  {
+
+    mat-form-field
+    {
+      background-color: #212121;
+      border-radius: 7px;
+      padding: 5px;
+    }
+
+    .sortDiv
+    {
+      float: left;
+    }
+
+    .searchDiv
+    {
+      float: right;
+    }
+  }
+
+  table
+  {
+    grid-row: 5;
+    cursor: pointer;
+
+    th, td
+    {
+      border: 1px solid #4a4a4a;
+      text-align: center;
+      padding: 5px;
+    }
+
+    th
+    {
+      color: #108a8b;
+    }
+
+    .mat-row.hovered {
+      background: #ada7a7;;
+    }
+
+    .mat-row.highlighted {
+      background: #999;
+    }
+  }
+}
+
+
 // .mat-select-value {
 //   color: black;
 // }

@@ -1,3 +1,21 @@
-<p>
-  edit-new-visitor works!
-</p>
+<form [formGroup]='visitorForm' (ngSubmit)='onSubmit()'>
+  <div>
+      <mat-form-field>
+        <input matInput formControlName='fullName' placeholder="Name" title='{{visitorForm.value.fullName}}' [errorStateMatcher]="matcher">
+        <mat-error *ngIf="!visitorForm.hasError('required')">
+          Please enter name
+        </mat-error>
+      </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput formControlName='phone' placeholder="Phone" title='{{visitorForm.value.phone}}' [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!visitorForm.hasError('required')">
+        Please enter author
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class='buttonDiv'>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!visitorForm.valid">Save</button>
+  </div>
+</form>

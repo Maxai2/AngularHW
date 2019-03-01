@@ -23,7 +23,7 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
 
   contextMenuPosition = { x: '0px', y: '0px' };
 
-  displayedColumns: string[] = ['id', 'name', 'phone'];
+  displayedColumns: string[] = ['id', 'fullName', 'phone'];
 
   constructor(
     private visitorService: VisitorService,
@@ -46,29 +46,32 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
     this.visitors.filter = filterValue.trim().toLowerCase();
   }
 
-  editBook(bookId: number) {
-    const book = this.visitorService.getVisitor(bookId);
-    const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: book });
+  editVisitor(visitorId: number) {
+    const visitor = this.visitorService.getVisitor(visitorId);
+    console.log(visitor);
+    const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: visitor });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
   }
 
-  newBook() {
-    const book = new Visitor();
-    const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: book });
+  newVisitor() {
+    const visitor = new Visitor();
+    const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: visitor });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.visitorService.addVisitor(result);
-      this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
+      if (result !== undefined) {
+        this.visitorService.addVisitor(result);
+        this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
+      }
     });
   }
 
-  onContextMenu(event: MouseEvent, bookId: number) {
+  onContextMenu(event: MouseEvent, visitorId: number) {
     event.preventDefault();
     this.contextMenuPosition.x = event.clientX + 'px';
     this.contextMenuPosition.y = event.clientY + 'px';
-    this.contextMenu.menuData = { 'item': bookId };
+    this.contextMenu.menuData = { 'item': visitorId };
     this.contextMenu.openMenu();
   }
 

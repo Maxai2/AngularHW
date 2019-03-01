@@ -4,3 +4,55 @@ body {
   background-color: #f5f5f5;
   color: #108a8b;
 }
+.buttonDiv {
+  display: grid;
+}
+.contDiv {
+  display: grid;
+  grid-template-rows: auto auto auto 20px 100px;
+}
+.contDiv .headNewDiv {
+  margin-top: 20px;
+}
+.contDiv .headNewDiv h4 {
+  float: left;
+  margin: 0;
+  padding-top: 10px;
+}
+.contDiv .headNewDiv button {
+  float: right;
+  background-color: #212121;
+}
+.contDiv hr {
+  width: 100%;
+}
+.contDiv .sortSearch mat-form-field {
+  background-color: #212121;
+  border-radius: 7px;
+  padding: 5px;
+}
+.contDiv .sortSearch .sortDiv {
+  float: left;
+}
+.contDiv .sortSearch .searchDiv {
+  float: right;
+}
+.contDiv table {
+  grid-row: 5;
+  cursor: pointer;
+}
+.contDiv table th,
+.contDiv table td {
+  border: 1px solid #4a4a4a;
+  text-align: center;
+  padding: 5px;
+}
+.contDiv table th {
+  color: #108a8b;
+}
+.contDiv table .mat-row.hovered {
+  background: #ada7a7;
+}
+.contDiv table .mat-row.highlighted {
+  background: #999;
+}
