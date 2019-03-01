@@ -21,6 +21,8 @@ export class EditNewBookComponent implements OnInit {
 
   bookForm: FormGroup;
   matcher = new CustomErrorStateMatcher();
+  curYear: number;
+  // get publishYear() { return this.bookForm.get('publishYear'); }
 
   constructor(
     private fb: FormBuilder,
@@ -30,10 +32,12 @@ export class EditNewBookComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.curYear = this.bookService.curYear;
+
     this.bookForm = this.fb.group({
       title: [this.data.title, Validators.required],
       author: [this.data.author, Validators.required],
-      publishYear: [this.data.publishYear, [Validators.required, Validators.min(1900)]],
+      publishYear: [this.data.publishYear, [Validators.required, Validators.min(1900), Validators.max(this.curYear)]],
       publishPlace: [this.data.publishPlace, Validators.required],
       pageCount: [this.data.pageCount, [Validators.required, Validators.min(5)]],
       countInLibrary: [this.data.countInLibrary, [Validators.required, Validators.min(1)]]

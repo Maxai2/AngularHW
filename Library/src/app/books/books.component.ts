@@ -39,6 +39,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   sortValue(value: string) {
     console.log(value);
+    // this.books.sortData();
   }
 
   applyFilter(filterValue: string) {
@@ -58,13 +59,13 @@ export class BooksComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
+      this.bookService.addBook(result);
+      this.books = new MatTableDataSource(this.bookService.getBooks());
     });
   }
 
   deleteBook(bookId: number) {
-    console.log(bookId);
     this.bookService.removeBook(bookId);
-    console.log(this.bookService.getBooks());
     this.books = new MatTableDataSource(this.bookService.getBooks());
   }
 
