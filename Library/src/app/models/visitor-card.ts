@@ -1,9 +1,9 @@
 export class VisitorCard {
   constructor(
-    public id: number,
-    public visitorId: number,
-    public bookId: number,
-    public dateTookBook: Date,
-    public dateReturneBook: Date
+    public id: number = 0,
+    public visitorId: number = 0,
+    public bookId: number = 0,
+    public dateTookBook: Date = null,
+    public dateReturneBook: Date = null
   ) {}
 }

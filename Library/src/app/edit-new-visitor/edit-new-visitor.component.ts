@@ -38,9 +38,8 @@ export class EditNewVisitorComponent implements OnInit {
   onSubmit() {
     if (this.visitorForm.valid) {
       if (this.data.id === 0) {
-        const id = this.visitorService.getNewLastId();
         const visitor = new Visitor(
-          id,
+          0,
           this.visitorForm.value.fullName,
           this.visitorForm.value.phone
         );

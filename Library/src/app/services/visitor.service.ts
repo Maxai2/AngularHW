@@ -30,14 +30,11 @@ export class VisitorService {
   }
 
   addVisitor(visitor: Visitor) {
+    visitor.id = this.visitors[this.visitors.length - 1].id + 1;
     this.visitors.push(visitor);
   }
 
   removeVisitor(visitorId: number) {
     this.visitors.splice(this.visitors.findIndex(v => v.id === visitorId), 1);
-  }
-
-  getNewLastId() {
-    return this.visitors[this.visitors.length - 1].id + 1;
   }
 }

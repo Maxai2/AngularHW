@@ -35,6 +35,7 @@ export class BookService {
   }
 
   addBook(book: Book) {
+    book.id = this.books[this.books.length - 1].id + 1;
     this.books.push(book);
   }
 
@@ -51,9 +52,5 @@ export class BookService {
 
   removeBook(bookId: number) {
     this.books.splice(this.books.findIndex(b => b.id === bookId), 1);
-  }
-
-  getNewLastId() {
-    return this.books[this.books.length - 1].id + 1;
   }
 }

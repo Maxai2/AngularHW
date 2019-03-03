@@ -41,9 +41,8 @@ export class EditNewBookComponent implements OnInit {
   onSubmit() {
     if (this.bookForm.valid) {
       if (this.data.id === 0) {
-        const id = this.bookService.getNewLastId();
         const book = new Book(
-          id,
+          0,
           this.bookForm.value.title,
           this.bookForm.value.author,
           this.bookForm.value.publishYear,

@@ -77,16 +77,15 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
+        // console.log(result);
+        this.bookService.removeBook(bookId);
+        this.books = new MatTableDataSource(this.bookService.getBooks());
       }
 
       this.dialogRef = null;
     });
 
-
     // console.log(confirm('R I sure in delete this book?'));
-    // this.bookService.removeBook(bookId);
-    // this.books = new MatTableDataSource(this.bookService.getBooks());
   }
 
   onContextMenu(event: MouseEvent, bookId: number) {
