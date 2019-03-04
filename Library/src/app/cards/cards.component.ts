@@ -19,7 +19,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['id', 'visitor', 'book', 'dateOut', 'returnBook'];
+  displayedColumns: string[] = ['id', 'VisName', 'bookName', 'dateTookBook', 'dateReturnBook'];
 
   constructor(
     private visitorCardsService: VisitorCardService,
@@ -28,7 +28,6 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
-    console.log(this.cards);
   }
 
   ngAfterViewInit(): void {

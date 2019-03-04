@@ -37,4 +37,8 @@ export class VisitorService {
   removeVisitor(visitorId: number) {
     this.visitors.splice(this.visitors.findIndex(v => v.id === visitorId), 1);
   }
+
+  getVisNameById (visitorId: number) {
+    return this.visitors.find(v => v.id === visitorId).fullName;
+  }
 }

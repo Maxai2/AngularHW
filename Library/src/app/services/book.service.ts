@@ -53,4 +53,8 @@ export class BookService {
   removeBook(bookId: number) {
     this.books.splice(this.books.findIndex(b => b.id === bookId), 1);
   }
+
+  getBookNameById (bookId: number) {
+    return this.books.find(b => b.id === bookId).title;
+  }
 }

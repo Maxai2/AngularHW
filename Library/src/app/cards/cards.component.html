@@ -32,24 +32,25 @@
       <td mat-cell *matCellDef="let card">{{card.id}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="visitor">
+    <ng-container matColumnDef="visitorId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Visitor </th>
-      <td mat-cell *matCellDef="let card">{{card.visitor}}</td>
+      <td mat-cell *matCellDef="let card">{{card.visitorId}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="book">
+    <ng-container matColumnDef="bookId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Book </th>
-      <td mat-cell *matCellDef="let card">{{card.book}}</td>
+      <td mat-cell *matCellDef="let card">{{card.bookId}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="dateOut">
+    <ng-container matColumnDef="dateTookBook">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Out </th>
-      <td mat-cell *matCellDef="let card">{{card.dateOut}}</td>
+      <td mat-cell *matCellDef="let card">{{card.dateTookBook | date: 'EEE dd/MM/yyyy'}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="returnBook">
+    <ng-container matColumnDef="dateReturnBook">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Return book </th>
-      <td mat-cell *matCellDef="let card">{{card.returnBook}}</td>
+      <td mat-cell *matCellDef="let card">{{card.dateReturnBook !== null ? (card.dateReturnBook | date: 'EEE dd/MM/yyyy') : 'null'}}</td>
+      <!-- <td mat-cell *matCellDef="let card" *ngIf='card.dateReturneBook === null'><mat-icon>home</mat-icon></td> -->
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
