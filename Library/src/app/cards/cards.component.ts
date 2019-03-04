@@ -19,7 +19,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['id', 'VisName', 'bookName', 'dateTookBook', 'dateReturnBook'];
+  displayedColumns: string[] = ['id', 'visName', 'bookName', 'dateTookBook', 'dateReturnBook'];
 
   constructor(
     private visitorCardsService: VisitorCardService,

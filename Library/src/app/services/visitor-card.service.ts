@@ -38,7 +38,7 @@ export class VisitorCardService {
     private visitorService: VisitorService
   ) { }
 
-  getCards() {
+  getCards(): CardVisVal[] {
     this.cards.forEach(c => {
       this.cardVisValArr.push(new CardVisVal(
         c.id,
