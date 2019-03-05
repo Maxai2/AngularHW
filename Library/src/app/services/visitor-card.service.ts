@@ -6,7 +6,7 @@ import { VisitorService } from './visitor.service';
 class CardVisVal {
   constructor(
     public id: number,
-    public VisName: string,
+    public visName: string,
     public bookName: string,
     public dateTookBook: Date,
     public dateReturnBook: Date
@@ -18,7 +18,7 @@ class CardVisVal {
 })
 export class VisitorCardService {
 
-  cardVisValArr: CardVisVal[];
+  cardVisValArr: CardVisVal[] = [];
 
   cards: VisitorCard[] = [
     new VisitorCard(1, 1, 1, new Date('01/12/2019'), new Date('03/12/2019')),
@@ -39,6 +39,8 @@ export class VisitorCardService {
   ) { }
 
   getCards(): CardVisVal[] {
+    this.cardVisValArr = [];
+
     this.cards.forEach(c => {
       this.cardVisValArr.push(new CardVisVal(
         c.id,
@@ -54,5 +56,9 @@ export class VisitorCardService {
   addCard(card: VisitorCard) {
     card.id = this.cards[this.cards.length - 1].id + 1;
     this.cards.push(card);
+  }
+
+  closeCard(cardId: number, curDate: string) {
+    this.cards.find(c => c.id === cardId).dateReturnBook = new Date(curDate);
   }
 }

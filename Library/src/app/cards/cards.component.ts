@@ -1,8 +1,9 @@
 import { NewCardComponent } from './../new-card/new-card.component';
-import { VisitorCard } from './../models/visitor-card';
-import { MatTableDataSource, MatSort, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatSort, MatDialog, MatDialogRef } from '@angular/material';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { VisitorCardService } from '../services/visitor-card.service';
+import { VisitorCard } from '../models/visitor-card';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-cards',
@@ -18,6 +19,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   cards = new MatTableDataSource;
 
   @ViewChild(MatSort) sort: MatSort;
+  dialogRef: MatDialogRef<ConfirmationDialogComponent>;
 
   displayedColumns: string[] = ['id', 'visName', 'bookName', 'dateTookBook', 'dateReturnBook'];
 
@@ -54,4 +56,23 @@ export class CardsComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  returnBook(cardId: number) {
+    const curDate = new Date();
+    const curDateToString = `${curDate.getMonth()}/${curDate.getDate()}/${curDate.getFullYear()}`;
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      disableClose: false
+    });
+
+    this.dialogRef.componentInstance.confirmMessage = `Return book by ${curDateToString}?`;
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.visitorCardsService.closeCard(cardId, curDateToString);
+        this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
+      }
+      this.dialogRef = null;
+    });
+  }
+
 }
