@@ -2,7 +2,6 @@ import { Visitor } from './../models/visitor';
 import { Component, OnInit, Inject } from '@angular/core';
 import { ErrorStateMatcher, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { VisitorService } from '../services/visitor.service';
 
 export class CustomErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -24,7 +23,6 @@ export class EditNewVisitorComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<EditNewVisitorComponent>,
-    private visitorService: VisitorService,
     @Inject(MAT_DIALOG_DATA) private data: Visitor
   ) { }
 

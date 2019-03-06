@@ -29,6 +29,15 @@ export class VisitorService {
     return this.visitors.find(v => v.id === visitorId);
   }
 
+  getVisitorsName() {
+    const names: string[] = [];
+    this.visitors.forEach(v => {
+      names.push(v.fullName);
+      }
+    );
+    return names;
+  }
+
   addVisitor(visitor: Visitor) {
     visitor.id = this.visitors[this.visitors.length - 1].id + 1;
     this.visitors.push(visitor);

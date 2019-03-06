@@ -30,6 +30,15 @@ export class BookService {
     return this.books;
   }
 
+  getBooksTitle() {
+    const bookNames: string[] = [];
+    this.books.forEach(v => {
+      bookNames.push(v.title);
+      }
+    );
+    return bookNames;
+  }
+
   getBook(bookId: number) {
     return this.books.find(b => b.id ===  bookId);
   }
