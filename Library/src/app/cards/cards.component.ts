@@ -59,7 +59,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   returnBook(cardId: number) {
     const curDate = new Date();
-    const curDateToString = `${curDate.getMonth()}/${curDate.getDate()}/${curDate.getFullYear()}`;
+    const curDateToString = `${curDate.getMonth() + 1}/${curDate.getDate()}/${curDate.getFullYear()}`;
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       disableClose: false
     });
