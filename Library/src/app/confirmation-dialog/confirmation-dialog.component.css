@@ -1,4 +1,7 @@
-.confCl {
+div {
+  display: grid;
+}
+div .confCl {
   color: #fff;
   background-color: #153961;
 }

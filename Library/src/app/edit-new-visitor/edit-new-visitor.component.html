@@ -11,7 +11,7 @@
     <mat-form-field>
       <input matInput formControlName='phone' placeholder="Phone" title='{{visitorForm.value.phone}}' [errorStateMatcher]="matcher">
       <mat-error *ngIf="!visitorForm.hasError('required')">
-        Please enter author
+        Please enter phone
       </mat-error>
     </mat-form-field>
   </div>

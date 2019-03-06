@@ -2,6 +2,7 @@ import { VisitorCard } from './../models/visitor-card';
 import { Injectable } from '@angular/core';
 import { BookService } from './book.service';
 import { VisitorService } from './visitor.service';
+import { CardElem } from '../Utils/CardElem';
 
 class CardVisVal {
   constructor(
@@ -53,9 +54,12 @@ export class VisitorCardService {
     return this.cardVisValArr;
   }
 
-  addCard(card: VisitorCard) {
-    card.id = this.cards[this.cards.length - 1].id + 1;
-    this.cards.push(card);
+  addCard(card: CardElem) {
+    const id = this.cards[this.cards.length - 1].id + 1;
+    const curDate = new Date();
+    const curDateToString = `${curDate.getMonth() + 1}/${curDate.getDate()}/${curDate.getFullYear()}`;
+    const visCard = new VisitorCard(id, card.visitorId, card.bookId, new Date(curDateToString), null);
+    this.cards.push(visCard);
   }
 
   closeCard(cardId: number, curDate: string) {

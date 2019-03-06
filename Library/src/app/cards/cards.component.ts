@@ -2,14 +2,16 @@ import { NewCardComponent } from './../new-card/new-card.component';
 import { MatTableDataSource, MatSort, MatDialog, MatDialogRef } from '@angular/material';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { VisitorCardService } from '../services/visitor-card.service';
-import { VisitorCard } from '../models/visitor-card';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { CardElem } from '../Utils/CardElem';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.less']
 })
+
 export class CardsComponent implements OnInit, AfterViewInit {
 
   sortFilter: string[] = [
@@ -46,13 +48,14 @@ export class CardsComponent implements OnInit, AfterViewInit {
   }
 
   newCard() {
-    const card = new VisitorCard();
+    const card = new CardElem();
     const dialogRef = this.dialog.open(NewCardComponent, { data: card });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result !== undefined) {
         this.visitorCardsService.addCard(result);
         this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
+        this.cards.sort = this.sort;
       }
     });
   }
@@ -64,12 +67,15 @@ export class CardsComponent implements OnInit, AfterViewInit {
       disableClose: false
     });
 
-    this.dialogRef.componentInstance.confirmMessage = `Return book by ${curDateToString}?`;
+    const curDatePipe = new DatePipe('en-US');
+
+    this.dialogRef.componentInstance.confirmMessage = `Return book by '${curDatePipe.transform(curDate, 'EEE dd/MMM/yyyy')}'?`;
 
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.visitorCardsService.closeCard(cardId, curDateToString);
         this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
+        this.cards.sort = this.sort;
       }
       this.dialogRef = null;
     });

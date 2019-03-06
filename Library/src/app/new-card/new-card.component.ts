@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomErrorStateMatcher } from '../Utils/CustomErrorStateMatcher';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { VisitorCard } from '../models/visitor-card';
 import { BookService } from '../services/book.service';
 import { VisitorService } from '../services/visitor.service';
+import { CardElem } from '../Utils/CardElem';
 
 @Component({
   selector: 'app-new-card',
@@ -24,7 +24,7 @@ export class NewCardComponent implements OnInit {
     private dialogRef: MatDialogRef<NewCardComponent>,
     private visitorService: VisitorService,
     private bookService: BookService,
-    @Inject(MAT_DIALOG_DATA) private data: VisitorCard
+    @Inject(MAT_DIALOG_DATA) private data: CardElem
   ) { }
 
   ngOnInit() {
@@ -39,8 +39,8 @@ export class NewCardComponent implements OnInit {
 
   onSubmit() {
     if (this.cardForm.valid) {
-      this.data.visitorId = this.cardForm.value.visitor;
-      this.data.bookId = this.cardForm.value.book;
+      this.data.visitorId = this.visitors.findIndex(v => v === this.cardForm.value.visitor) + 1;
+      this.data.bookId = this.books.findIndex(b => b === this.cardForm.value.book) + 1;
 
       this.dialogRef.close(this.data);
     }

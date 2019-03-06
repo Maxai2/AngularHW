@@ -14,8 +14,13 @@ import { MatTableDataSource, MatSort, MatDialog, MatMenuTrigger, MatDialogRef } 
 export class BooksComponent implements OnInit, AfterViewInit {
 
   sortFilter: string[] = [
-    'author', 'count', 'P. Count', 'Pub. Place', 'Pub. Year', 'title'
+    'title', 'author', 'publishYear', 'publishPlace', 'pageCount', 'countInLibrary'
   ];
+
+  // sortFilter: string[] = [
+  //   'title', 'author', 'countInLibrary'
+  // ];
+
   books = new MatTableDataSource;
   dialogRef: MatDialogRef<ConfirmationDialogComponent>;
 
@@ -40,8 +45,11 @@ export class BooksComponent implements OnInit, AfterViewInit {
   }
 
   sortValue(value: string) {
-    console.log(value);
-    // this.books.sortData();
+    this.sort.sort({
+      id: value,
+      start: 'asc',
+      disableClear: true
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -64,6 +72,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
       if (result !== undefined) {
         this.bookService.addBook(result);
         this.books = new MatTableDataSource(this.bookService.getBooks());
+        this.books.sort = this.sort;
       }
     });
   }
@@ -80,6 +89,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
         // console.log(result);
         this.bookService.removeBook(bookId);
         this.books = new MatTableDataSource(this.bookService.getBooks());
+        this.books.sort = this.sort;
       }
 
       this.dialogRef = null;

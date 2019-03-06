@@ -12,7 +12,7 @@ import { Visitor } from '../models/visitor';
 export class VisitorsComponent implements OnInit, AfterViewInit {
 
   sortFilter: string[] = [
-    'name', 'phone'
+    'fullName', 'phone'
   ];
 
   visitors = new MatTableDataSource;
@@ -38,8 +38,11 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
   }
 
   sortValue(value: string) {
-    console.log(value);
-    // this.books.sortData();
+    this.sort.sort({
+      id: value,
+      start: 'asc',
+      disableClear: true
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -63,6 +66,7 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
       if (result !== undefined) {
         this.visitorService.addVisitor(result);
         this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
+        this.visitors.sort = this.sort;
       }
     });
   }
