@@ -3,7 +3,7 @@
       <mat-form-field>
         <mat-select placeholder='Visitor'[errorStateMatcher]="matcher">
           <mat-option>--</mat-option>
-          <mat-option *ngFor="let s of visitors" [value]="v">
+          <mat-option *ngFor="let v of visitors" [value]="v">
             {{v}}
           </mat-option>
           <mat-error *ngIf="!cardForm.hasError('required')">
@@ -23,7 +23,7 @@
     <mat-form-field>
       <mat-select placeholder='Book'[errorStateMatcher]="matcher">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let s of books" [value]="b">
+        <mat-option *ngFor="let b of books" [value]="b">
           {{b}}
         </mat-option>
         <mat-error *ngIf="!cardForm.hasError('required')">
