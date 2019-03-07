@@ -29,11 +29,10 @@ export class NewCardComponent implements OnInit {
 
   ngOnInit() {
     this.cardForm = this.fb.group({
-      visitor: [this.data.visitorId, Validators.required],
-      book: [this.data.bookId, Validators.required]
+      visitor: ['', Validators.required],
+      book: ['', Validators.required]
     });
 
-    console.log(this.cardForm.value.book);
     this.visitors = this.visitorService.getVisitorsName();
     this.books = this.bookService.getBooksTitle();
   }

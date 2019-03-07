@@ -13,6 +13,9 @@
       <mat-error *ngIf="!visitorForm.hasError('required')">
         Please enter phone
       </mat-error>
+      <mat-error *ngIf="!visitorForm.hasError('pattern')">
+        Please enter correct phone number
+      </mat-error>
     </mat-form-field>
   </div>
   <div class='buttonDiv'>

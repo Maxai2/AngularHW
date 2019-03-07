@@ -24,6 +24,12 @@ export class BookService {
   constructor() {
     const tempDate = new Date();
     this.curYear = tempDate.getFullYear();
+
+    if (localStorage.getItem('books') === null) {
+      localStorage.setItem('books', JSON.stringify(this.books));
+    } else {
+      this.books = JSON.parse(localStorage.getItem('books'));
+    }
   }
 
   getBooks() {
@@ -44,9 +50,14 @@ export class BookService {
     return this.books.find(b => b.id ===  bookId);
   }
 
+  getBookNameById (bookId: number) {
+    return this.books.find(b => b.id === bookId).title;
+  }
+
   addBook(book: Book) {
     book.id = this.books[this.books.length - 1].id + 1;
     this.books.push(book);
+    localStorage.setItem('books', JSON.stringify(this.books));
   }
 
   // editBook(bookId: number, book: Book) {
@@ -62,9 +73,6 @@ export class BookService {
 
   removeBook(bookId: number) {
     this.books.splice(this.books.findIndex(b => b.id === bookId), 1);
-  }
-
-  getBookNameById (bookId: number) {
-    return this.books.find(b => b.id === bookId).title;
+    localStorage.setItem('books', JSON.stringify(this.books));
   }
 }

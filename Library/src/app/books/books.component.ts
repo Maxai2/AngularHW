@@ -58,17 +58,14 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   editBook(bookId: number) {
     const book = this.bookService.getBook(bookId);
-    const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    this.dialog.open(EditNewBookComponent, { data: book });
+    localStorage.setItem('books', JSON.stringify(this.bookService.getBooks()));
   }
 
   newBook() {
     const book = new Book();
     const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result !== undefined) {
         this.bookService.addBook(result);
         this.books = new MatTableDataSource(this.bookService.getBooks());
