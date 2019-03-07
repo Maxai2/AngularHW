@@ -33,8 +33,9 @@ export class BookService {
   getBooksTitle() {
     const bookNames: string[] = [];
     this.books.forEach(v => {
-      bookNames.push(v.title);
-      }
+      if (v.countInLibrary !== 0) {
+        bookNames.push(v.title);
+      }}
     );
     return bookNames;
   }

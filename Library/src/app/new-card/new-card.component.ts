@@ -33,6 +33,7 @@ export class NewCardComponent implements OnInit {
       book: [this.data.bookId, Validators.required]
     });
 
+    console.log(this.cardForm.value.book);
     this.visitors = this.visitorService.getVisitorsName();
     this.books = this.bookService.getBooksTitle();
   }

@@ -60,9 +60,11 @@ export class VisitorCardService {
     const curDateToString = `${curDate.getMonth() + 1}/${curDate.getDate()}/${curDate.getFullYear()}`;
     const visCard = new VisitorCard(id, card.visitorId, card.bookId, new Date(curDateToString), null);
     this.cards.push(visCard);
+    this.bookService.getBook(card.bookId).countInLibrary--;
   }
 
   closeCard(cardId: number, curDate: string) {
     this.cards.find(c => c.id === cardId).dateReturnBook = new Date(curDate);
+    this.bookService.getBook(this.cards.find(c => c.id === cardId).bookId).countInLibrary++;
   }
 }
