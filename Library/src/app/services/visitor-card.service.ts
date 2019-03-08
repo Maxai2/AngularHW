@@ -37,7 +37,15 @@ export class VisitorCardService {
   constructor(
     private bookService: BookService,
     private visitorService: VisitorService
-  ) { }
+  ) {
+    const ls = localStorage.getItem('cards');
+
+    if (ls === null) {
+      localStorage.setItem('cards', JSON.stringify(this.cards));
+    } else {
+      this.cards = JSON.parse(ls);
+    }
+  }
 
   getCards(): CardVisVal[] {
     this.cardVisValArr = [];
@@ -61,10 +69,12 @@ export class VisitorCardService {
     const visCard = new VisitorCard(id, card.visitorId, card.bookId, new Date(curDateToString), null);
     this.cards.push(visCard);
     this.bookService.getBook(card.bookId).countInLibrary--;
+    localStorage.setItem('cards', JSON.stringify(this.cards));
   }
 
   closeCard(cardId: number, curDate: string) {
     this.cards.find(c => c.id === cardId).dateReturnBook = new Date(curDate);
     this.bookService.getBook(this.cards.find(c => c.id === cardId).bookId).countInLibrary++;
+    localStorage.setItem('cards', JSON.stringify(this.cards));
   }
 }

@@ -19,7 +19,15 @@ export class VisitorService {
     new Visitor(10, 'Cameron Rennie', '012 967 47 85')
   ];
 
-  constructor() { }
+  constructor() {
+    const ls = localStorage.getItem('visitors');
+
+    if (ls === null) {
+      localStorage.setItem('visitors', JSON.stringify(this.visitors));
+    } else {
+      this.visitors = JSON.parse(ls);
+    }
+  }
 
   getVisitors() {
     return this.visitors;
@@ -38,16 +46,22 @@ export class VisitorService {
     return names;
   }
 
+  getVisNameById (visitorId: number) {
+    return this.visitors.find(v => v.id === visitorId).fullName;
+  }
+
   addVisitor(visitor: Visitor) {
     visitor.id = this.visitors[this.visitors.length - 1].id + 1;
     this.visitors.push(visitor);
+    localStorage.setItem('visitors', JSON.stringify(this.visitors));
+  }
+
+  updateVisitor() {
+    localStorage.setItem('visitors', JSON.stringify(this.visitors));
   }
 
   removeVisitor(visitorId: number) {
     this.visitors.splice(this.visitors.findIndex(v => v.id === visitorId), 1);
-  }
-
-  getVisNameById (visitorId: number) {
-    return this.visitors.find(v => v.id === visitorId).fullName;
+    localStorage.setItem('visitors', JSON.stringify(this.visitors));
   }
 }

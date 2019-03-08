@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+// import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @NgModule({
 imports: [
   MatButtonModule,
@@ -36,6 +37,10 @@ exports: [
   MatRadioModule,
   MatMenuModule,
   MatIconModule
-]
+],
+// providers: [
+//   { provide: MatDialogRef, useValue: {} },
+//   { provide: MAT_DIALOG_DATA, useValue: [] }
+// ]
 })
 export class MaterialAppModule { }

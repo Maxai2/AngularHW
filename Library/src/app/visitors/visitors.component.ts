@@ -3,6 +3,7 @@ import { MatTableDataSource, MatSort, MatMenuTrigger, MatDialog } from '@angular
 import { VisitorService } from '../services/visitor.service';
 import { EditNewVisitorComponent } from '../edit-new-visitor/edit-new-visitor.component';
 import { Visitor } from '../models/visitor';
+import { Router, NavigationStart, Event } from '@angular/router';
 
 @Component({
   selector: 'app-visitors',
@@ -27,7 +28,15 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
 
   constructor(
     private visitorService: VisitorService,
-    public dialog: MatDialog) { }
+    private router: Router,
+    public dialog: MatDialog) {
+      this.router.events.subscribe((event: Event) => {
+        if (event instanceof NavigationStart) {
+          this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
+          this.visitors.sort = this.sort;
+        }
+      });
+    }
 
   ngOnInit() {
     this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
@@ -49,27 +58,22 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
     this.visitors.filter = filterValue.trim().toLowerCase();
   }
 
-  editVisitor(visitorId: number) {
-    const visitor = this.visitorService.getVisitor(visitorId);
-    console.log(visitor);
-    const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: visitor });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
-  }
+  // editVisitor(visitorId: number) {
+  //   const visitor = this.visitorService.getVisitor(visitorId);
+  //   this.dialog.open(EditNewVisitorComponent, { data: visitor });
+  // }
 
-  newVisitor() {
-    const visitor = new Visitor();
-    const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: visitor });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if (result !== undefined) {
-        this.visitorService.addVisitor(result);
-        this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
-        this.visitors.sort = this.sort;
-      }
-    });
-  }
+  // newVisitor() {
+  //   const visitor = new Visitor();
+  //   const dialogRef = this.dialog.open(EditNewVisitorComponent, { data: visitor });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result !== undefined) {
+  //       this.visitorService.addVisitor(result);
+  //       this.visitors = new MatTableDataSource(this.visitorService.getVisitors());
+  //       this.visitors.sort = this.sort;
+  //     }
+  //   });
+  // }
 
   onContextMenu(event: MouseEvent, visitorId: number) {
     event.preventDefault();
@@ -78,5 +82,4 @@ export class VisitorsComponent implements OnInit, AfterViewInit {
     this.contextMenu.menuData = { 'item': visitorId };
     this.contextMenu.openMenu();
   }
-
 }

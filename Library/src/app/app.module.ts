@@ -10,10 +10,12 @@ import { VisitorsComponent } from './visitors/visitors.component';
 import { CardsComponent } from './cards/cards.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { EditNewBookComponent } from './edit-new-book/edit-new-book.component';
+import { BookEditWrapComponent } from './book-edit-wrap/book-edit-wrap.component';
 import { EditNewVisitorComponent } from './edit-new-visitor/edit-new-visitor.component';
 import { NewCardComponent } from './new-card/new-card.component';
 import { MaterialAppModule } from './ngmaterial.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VisitorEditWrapComponent } from './visitor-edit-wrap/visitor-edit-wrap.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,20 +24,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CardsComponent,
     StatisticsComponent,
     EditNewBookComponent,
+    BookEditWrapComponent,
     EditNewVisitorComponent,
     NewCardComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    VisitorEditWrapComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    MaterialAppModule,
     BrowserAnimationsModule,
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialAppModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmationDialogComponent]
+  entryComponents: [
+    ConfirmationDialogComponent,
+    EditNewBookComponent,
+    EditNewVisitorComponent
+  ]
 })
 export class AppModule { }

@@ -25,10 +25,12 @@ export class BookService {
     const tempDate = new Date();
     this.curYear = tempDate.getFullYear();
 
-    if (localStorage.getItem('books') === null) {
+    const ls = localStorage.getItem('books');
+
+    if (ls === null) {
       localStorage.setItem('books', JSON.stringify(this.books));
     } else {
-      this.books = JSON.parse(localStorage.getItem('books'));
+      this.books = JSON.parse(ls);
     }
   }
 
@@ -58,6 +60,10 @@ export class BookService {
     book.id = this.books[this.books.length - 1].id + 1;
     this.books.push(book);
     localStorage.setItem('books', JSON.stringify(this.books));
+  }
+
+  updateBook() {
+    localStorage.setItem('book', JSON.stringify(this.books));
   }
 
   // editBook(bookId: number, book: Book) {

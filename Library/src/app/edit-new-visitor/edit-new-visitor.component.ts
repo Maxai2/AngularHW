@@ -29,10 +29,10 @@ export class EditNewVisitorComponent implements OnInit {
   ngOnInit() {
     this.visitorForm = this.fb.group({
       fullName: [this.data.fullName, Validators.required],
-      phone: [this.data.phone, [Validators.required, Validators.pattern('/^[0-9]{1,4}\s{1}[-\s0-9]*$/')]]
+      phone: [this.data.phone, [Validators.required]]
     });
   }
-
+//, Validators.pattern('/^[0-9]{1,4}\s{1}[-\s0-9]*$/')
   onSubmit() {
     if (this.visitorForm.valid) {
       if (this.data.id === 0) {

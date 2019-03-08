@@ -1,3 +1,4 @@
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { EditNewBookComponent } from './../edit-new-book/edit-new-book.component';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { BookService } from '../services/book.service';
@@ -34,7 +35,27 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   constructor(
     private bookService: BookService,
-    public dialog: MatDialog) { }
+    private router: Router,
+    public dialog: MatDialog) {
+      this.router.events.subscribe((event: Event) => {
+        if (event instanceof NavigationStart) {
+          this.books = new MatTableDataSource(this.bookService.getBooks());
+          this.books.sort = this.sort;
+        }
+
+        // if (event instanceof NavigationEnd) {
+        //     // Hide loading indicator
+        //     console.log('e');
+        // }
+
+        // if (event instanceof NavigationError) {
+        //     // Hide loading indicator
+
+        //     // Present error to user
+        //     console.log('er');
+        // }
+    });
+  }
 
   ngOnInit() {
     this.books = new MatTableDataSource(this.bookService.getBooks());
@@ -56,23 +77,24 @@ export class BooksComponent implements OnInit, AfterViewInit {
     this.books.filter = filterValue.trim().toLowerCase();
   }
 
-  editBook(bookId: number) {
-    const book = this.bookService.getBook(bookId);
-    this.dialog.open(EditNewBookComponent, { data: book });
-    localStorage.setItem('books', JSON.stringify(this.bookService.getBooks()));
-  }
+  // editBook(bookId: number) {
+  //   const book = this.bookService.getBook(bookId);
+  //   this.dialog.open(EditNewBookComponent, { data: book });
+  //   this.bookService.updateBook();
+  //   // localStorage.setItem('books', JSON.stringify(this.bookService.getBooks()));
+  // }
 
-  newBook() {
-    const book = new Book();
-    const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        this.bookService.addBook(result);
-        this.books = new MatTableDataSource(this.bookService.getBooks());
-        this.books.sort = this.sort;
-      }
-    });
-  }
+  // newBook() {
+  //   const book = new Book();
+  //   const dialogRef = this.dialog.open(EditNewBookComponent, { data: book });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result !== undefined) {
+  //       this.bookService.addBook(result);
+  //       this.books = new MatTableDataSource(this.bookService.getBooks());
+  //       this.books.sort = this.sort;
+  //     }
+  //   });
+  // }
 
   deleteBook(bookId: number) {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {

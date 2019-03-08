@@ -1,7 +1,8 @@
 <div class='contDiv'>
     <div class='headNewDiv'>
       <h4>ALL VISITORS:</h4>
-      <button mat-button (click)='newVisitor()'>New visitor</button>
+      <button mat-button routerLink='/visitors/new'>New visitor</button>
+      <!-- <button mat-button (click)='newVisitor()'>New visitor</button> -->
     </div>
     <hr>
 
@@ -83,8 +84,11 @@
     </table>
     <mat-menu #contextMenu="matMenu">
       <ng-template matMenuContent let-item="item">
-        <button mat-menu-item (click)="editVisitor(item)">Edit</button>
+        <button mat-menu-item routerLink='/visitors/edit/{{item}}'>Edit</button>
+        <!-- <button mat-menu-item (click)="editVisitor(item)">Edit</button> -->
       </ng-template>
     </mat-menu>
 
   </div>
+
+  <router-outlet></router-outlet>
