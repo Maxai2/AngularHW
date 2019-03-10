@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 // import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @NgModule({
 imports: [
@@ -23,7 +24,8 @@ imports: [
   MatDialogModule,
   MatRadioModule,
   MatMenuModule,
-  MatIconModule
+  MatIconModule,
+  MatDividerModule
 ],
 exports: [
   MatButtonModule,
@@ -36,7 +38,8 @@ exports: [
   MatDialogModule,
   MatRadioModule,
   MatMenuModule,
-  MatIconModule
+  MatIconModule,
+  MatDividerModule
 ],
 // providers: [
 //   { provide: MatDialogRef, useValue: {} },

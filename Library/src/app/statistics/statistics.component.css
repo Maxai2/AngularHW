@@ -1,0 +1,13 @@
+.statDiv {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+}
+.statDiv h2 {
+  text-align: center;
+}
+.statDiv mat-divider {
+  color: red;
+}
+.statDiv table {
+  width: 100%;
+}

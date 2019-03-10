@@ -5,6 +5,7 @@ import { VisitorCardService } from '../services/visitor-card.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { CardElem } from '../Utils/CardElem';
 import { DatePipe } from '@angular/common';
+import { Router, NavigationStart, Event } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -27,8 +28,16 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   constructor(
     private visitorCardsService: VisitorCardService,
+    private router: Router,
     public dialog: MatDialog
-  ) { }
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
+        this.cards.sort = this.sort;
+      }
+    });
+  }
 
   ngOnInit() {
     this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
@@ -47,18 +56,18 @@ export class CardsComponent implements OnInit, AfterViewInit {
     this.cards.filter = filterValue.trim().toLowerCase();
   }
 
-  newCard() {
-    const card = new CardElem();
-    const dialogRef = this.dialog.open(NewCardComponent, { data: card });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if (result !== undefined) {
-        this.visitorCardsService.addCard(result);
-        this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
-        this.cards.sort = this.sort;
-      }
-    });
-  }
+  // newCard() {
+  //   const card = new CardElem();
+  //   const dialogRef = this.dialog.open(NewCardComponent, { data: card });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(result);
+  //     if (result !== undefined) {
+  //       this.visitorCardsService.addCard(result);
+  //       this.cards = new MatTableDataSource(this.visitorCardsService.getCards());
+  //       this.cards.sort = this.sort;
+  //     }
+  //   });
+  // }
 
   returnBook(cardId: number) {
     const curDate = new Date();

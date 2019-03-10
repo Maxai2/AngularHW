@@ -21,7 +21,7 @@ export class BookEditWrapComponent implements OnInit {
 
   ngOnInit() {
     let book = new Book();
-    
+
     this.route.params.forEach((params) => {
       const bookId = +params['id'];
       if (!isNaN(bookId)) {

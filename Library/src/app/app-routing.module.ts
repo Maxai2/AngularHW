@@ -1,3 +1,4 @@
+import { CardEditWrapComponent } from './card-edit-wrap/card-edit-wrap.component';
 import { VisitorEditWrapComponent } from './visitor-edit-wrap/visitor-edit-wrap.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -24,7 +25,8 @@ const routes: Routes = [
     { path: 'new', component: VisitorEditWrapComponent }
   ]},
   { path: 'cards', component: CardsComponent, children: [
-    { path: 'new', component: NewCardComponent}
+    // { path: 'new', component: NewCardComponent}
+    { path: 'new', component: CardEditWrapComponent}
   ]},
   { path: 'statistics', component: StatisticsComponent}
 ];

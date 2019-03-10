@@ -16,6 +16,7 @@ import { NewCardComponent } from './new-card/new-card.component';
 import { MaterialAppModule } from './ngmaterial.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VisitorEditWrapComponent } from './visitor-edit-wrap/visitor-edit-wrap.component';
+import { CardEditWrapComponent } from './card-edit-wrap/card-edit-wrap.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { VisitorEditWrapComponent } from './visitor-edit-wrap/visitor-edit-wrap.
     EditNewVisitorComponent,
     NewCardComponent,
     ConfirmationDialogComponent,
-    VisitorEditWrapComponent
+    VisitorEditWrapComponent,
+    CardEditWrapComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { VisitorEditWrapComponent } from './visitor-edit-wrap/visitor-edit-wrap.
   entryComponents: [
     ConfirmationDialogComponent,
     EditNewBookComponent,
-    EditNewVisitorComponent
+    EditNewVisitorComponent,
+    NewCardComponent
   ]
 })
 export class AppModule { }
