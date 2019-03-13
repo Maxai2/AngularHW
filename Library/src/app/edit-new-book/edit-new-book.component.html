@@ -18,10 +18,10 @@
   <div>
     <mat-form-field>
       <input matInput type='number' formControlName='publishYear' placeholder="Publish year" [errorStateMatcher]="matcher">
-      <mat-error *ngIf="!bookForm.hasError('min')">
+      <mat-error *ngIf="bookForm.get('publishYear').hasError('min')">
           Please enter value 1900 or more
       </mat-error>
-      <mat-error *ngIf="!bookForm.hasError('max') && !bookForm.hasError('min')">
+      <mat-error *ngIf="bookForm.get('publishYear').hasError('max')">
           Please enter value less than {{curYear}}
       </mat-error>
     </mat-form-field>
