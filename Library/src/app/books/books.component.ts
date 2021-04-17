@@ -4,7 +4,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { ConfirmationDialogComponent } from './../confirmation-dialog/confirmation-dialog.component';
 import { Book } from '../models/book';
-import { MatTableDataSource, MatSort, MatDialog, MatMenuTrigger, MatDialogRef } from '@angular/material';
+import { MatTableDataSource, MatSort, MatDialog, MatMenuTrigger, MatDialogRef, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-books',
@@ -35,6 +35,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
 
   constructor(
     private bookService: BookService,
+    private snackBar: MatSnackBar,
     private router: Router,
     public dialog: MatDialog) {
       this.router.events.subscribe((event: Event) => {
@@ -109,6 +110,8 @@ export class BooksComponent implements OnInit, AfterViewInit {
         this.bookService.removeBook(bookId);
         this.books = new MatTableDataSource(this.bookService.getBooks());
         this.books.sort = this.sort;
+
+        this.snackBar.open('Book deleted!');
       }
 
       this.dialogRef = null;

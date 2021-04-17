@@ -12,6 +12,7 @@ import { NewCardComponent } from './new-card/new-card.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: 'books', component: BooksComponent, children: [
     { path: 'edit/:id', component: BookEditWrapComponent },
     { path: 'new', component: BookEditWrapComponent }

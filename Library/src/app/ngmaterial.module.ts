@@ -11,39 +11,41 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @NgModule({
-imports: [
-  MatButtonModule,
-  MatToolbarModule,
-  MatSelectModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatTableModule,
-  MatSortModule,
-  MatDialogModule,
-  MatRadioModule,
-  MatMenuModule,
-  MatIconModule,
-  MatDividerModule
-],
-exports: [
-  MatButtonModule,
-  MatToolbarModule,
-  MatSelectModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatTableModule,
-  MatSortModule,
-  MatDialogModule,
-  MatRadioModule,
-  MatMenuModule,
-  MatIconModule,
-  MatDividerModule
-],
-// providers: [
-//   { provide: MatDialogRef, useValue: {} },
-//   { provide: MAT_DIALOG_DATA, useValue: [] }
-// ]
+  imports: [
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatSnackBarModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule
+  ],
+  // providers: [
+  //   { provide: MatDialogRef, useValue: {} },
+  //   { provide: MAT_DIALOG_DATA, useValue: [] }
+  // ]
 })
 export class MaterialAppModule { }
